@@ -1,0 +1,38 @@
+{
+    "ConfinderSaveableData": {
+        "Points": [
+            {
+                "x": 3.0,
+                "y": 4.0
+            },
+            {
+                "x": -3.0,
+                "y": 4.0
+            },
+            {
+                "x": -3.0,
+                "y": -60.0
+            },
+            {
+                "x": 3.0,
+                "y": -60.0
+            }
+        ]
+    },
+    "EarthSaveableData": {
+        "Position": {
+            "x": 0.0,
+            "y": -59.0
+        }
+    },
+    "ObsticleSaveableDatas": [
+        {
+            "Index": 1,
+            "Position": {
+                "x": 0.0,
+                "y": -16.399999618530275
+            }
+        }
+    ],
+    "MovingObsticleSaveableDatas": []
+}
