@@ -1,6 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +6,7 @@ public class LevelLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject _levelPanel;
     [SerializeField] private Player _playerTemplate;
+    [SerializeField] private CameraAnker _cameraAnkerTemplate;
     [SerializeField] private Transform _content;
     [SerializeField] private LevelSelectionButton _template;
     [SerializeField] private LevelLoader _loader;
@@ -22,7 +21,6 @@ public class LevelLauncher : MonoBehaviour
     private void Start()
     {
         _levelPanel.SetActive(true);
-        //ToDo: Create and Init Buttons
 
         for (int i = 0; i < _levels.Lenght; i++)
         {
@@ -43,8 +41,11 @@ public class LevelLauncher : MonoBehaviour
             
             
             var player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
+            var cameraAnker = Instantiate(_cameraAnkerTemplate, Vector2.zero, Quaternion.identity);
             player.Init(_pool);
-            _virtualCamera.Follow = player.transform;
+            cameraAnker.Init(player.transform);
+
+            _virtualCamera.Follow = cameraAnker.transform;
             var playerMovement = player.GetComponent<PlayerMovement>();
             _leftButton.onClick.AddListener(playerMovement.MoveLeft);
             _rightButton.onClick.AddListener(playerMovement.MoveRight);
