@@ -19,12 +19,7 @@ public class Confinder : MonoBehaviour, ISaveableItem
     public void Load(BaseSaveableData data)
     {
         if (data is ConfinderSaveableData confinderSaveableData)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                _collider.points[i] = confinderSaveableData.Points[i];
-            }
-        }
+            _collider.SetPath(0, confinderSaveableData.Points);
     }
 }
 

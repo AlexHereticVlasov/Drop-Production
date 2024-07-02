@@ -38,8 +38,8 @@ public class LevelLauncher : MonoBehaviour
             //ToDo: Init Drop and BonusSpawner;
             _levelPanel.SetActive(false);
             _bonusSpawner.Launch();
-            
-            
+
+
             var player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
             var cameraAnker = Instantiate(_cameraAnkerTemplate, Vector2.zero, Quaternion.identity);
             player.Init(_pool);
