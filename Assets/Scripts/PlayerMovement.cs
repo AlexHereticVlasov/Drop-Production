@@ -5,14 +5,26 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
 
-    private float[] _xPositions = {-2, -1f, 0, 1f, 2f };
+    private DropSize _size;
+    private BaseState _state;
+    private float[] _xPositions = {-2f, -1f, 0, 1f, 2f };
     private int _currentIndex = 2;
     private float _sideSpeed = 1;
     private float _speed = 1;
 
     private Coroutine _moveRoutine;
 
-    public void Move() => _transform.Translate(_speed * Time.deltaTime * Vector2.down);
+    public void Init(DropSize size, ref BaseState state)
+    {
+        _size = size;
+        _state = state;
+    }
+
+    public void Move()
+    {
+        float width = _state.SizeWiddth == 1 ? _size.Size : 1; 
+        _transform.Translate(_speed * Time.deltaTime * Vector2.down * width);
+    }
 
     public void MoveLeft() => ChangePosition(-1);
     public void MoveRight() => ChangePosition(1);
@@ -39,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
         while (factor < 1)
         {
-            factor += Time.deltaTime / distance * _sideSpeed;
+            float width = _state.SizeWiddth == 1 ? _size.Size : 1;
+            factor += Time.deltaTime / distance * _sideSpeed * width;
             float newX = Mathf.Lerp(previousX, _xPositions[_currentIndex], factor);
             _transform.position = new Vector2(newX, _transform.position.y);
             yield return null;

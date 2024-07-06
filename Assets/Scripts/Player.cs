@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDestructable
@@ -7,24 +8,34 @@ public class Player : MonoBehaviour, IDestructable
     [SerializeField] private BaseState _curentState;
     [SerializeField] private StatesBeen _states;
 
+    private bool _canBeHited = true;
     private ColorHandler _colorHandler;
     private Timer _timer;
+    private DropSize _size;
 
     public void Init(WaterPool pool)
     {
         _pool = pool;
+        _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
+        _movement.Init(_size, ref _curentState);
+    }
+
+    private void OnValueChanged(float value, float max)
+    {
+        if (_curentState is DropState)
+            _size.ChangeSize(value / max);
     }
 
     private void Awake()
     {
+        _size = new DropSize(transform, StartCoroutine);
         _colorHandler = new ColorHandler();
         ChangeState(_states.DropState);
     }
 
     private void OnEnable()
     {
-        
         _colorHandler.ThreeInRow += OnThreeInRow;
     }
 
@@ -66,7 +77,7 @@ public class Player : MonoBehaviour, IDestructable
 
     public bool TryChangeStateToSnowflake()
     {
-        if (_curentState is SnowflakeState || _curentState is IcycleState) 
+        if (_curentState is SnowflakeState || _curentState is IcycleState)
             return false;
 
         if (_pool.TryReduce(_states.SnowflakeState.TransformCost))
@@ -88,17 +99,32 @@ public class Player : MonoBehaviour, IDestructable
 
         if (_curentState.Length > 0)
             SetTimer(_curentState.Length);
+
+        if (state is DropState)
+            _size.ChangeSize();
+        else
+            _size.ChangeSize(1);
     }
 
     public void Hit(Obsticle obsticle)
     {
-            if (_curentState is IcycleState)
-            {
-                obsticle.Kill();
-                return;
-            } 
+        if (_canBeHited == false) return;
 
-            _pool.Reduce(_curentState.CollisionCost);
+        if (_curentState is IcycleState)
+        {
+            obsticle.Kill();
+            return;
+        }
+
+        _pool.Reduce(_curentState.CollisionCost);
+        StartCoroutine(BecomeImmortal());
+    }
+
+    private IEnumerator BecomeImmortal()
+    {
+        _canBeHited = false;
+        yield return new WaitForSeconds(1);
+        _canBeHited = true;
     }
 
     public void SetTimer(float length)
@@ -107,7 +133,7 @@ public class Player : MonoBehaviour, IDestructable
             _timer.TimeIsRunningOut -= OnTimeIsRunningOut;
 
         _timer = new Timer(length);
-        _timer.TimeIsRunningOut += OnTimeIsRunningOut; 
+        _timer.TimeIsRunningOut += OnTimeIsRunningOut;
     }
 
     private void OnTimeIsRunningOut()

@@ -8,6 +8,7 @@ public abstract class BaseState
     [field: SerializeField] public float FallingSpeed { get; internal set; }
     [field: SerializeField] public float SideSpeed { get; internal set; }
     [field: SerializeField] public float Length { get; internal set; }
+    [field: SerializeField] public float SizeWiddth { get; internal set; }
 }
 
 [System.Serializable]
