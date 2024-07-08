@@ -1867,6 +1867,7 @@ GameObject:
   - component: {fileID: 625539604}
   - component: {fileID: 625539605}
   - component: {fileID: 625539606}
+  - component: {fileID: 625539607}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1950,6 +1951,8 @@ MonoBehaviour:
   _rightButton: {fileID: 973952084}
   _snowButton: {fileID: 1454579005}
   _steamButton: {fileID: 897034839}
+  _pauseButton: {fileID: 1459091053}
+  _pauseMenu: {fileID: 625539607}
 --- !u!114 &625539606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,6 +1971,19 @@ MonoBehaviour:
   _textAsset: {fileID: 4900000, guid: 4638a4c72a4043f4fa05975f7e9b640b, type: 3}
   _staticObsticleTemplate: {fileID: 7729431158513039772, guid: af60803f77c8fe84faafbee3a845394a, type: 3}
   _movingObsticleTemplate: {fileID: 141936947184962332, guid: 25fdc892fbc25f74d81b30603a59af1a, type: 3}
+--- !u!114 &625539607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625539601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11275f8a738b4b84d9e4d9fcdb8561e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panel: {fileID: 173880650}
 --- !u!1 &640338877
 GameObject:
   m_ObjectHideFlags: 0
@@ -4002,7 +4018,7 @@ GameObject:
   - component: {fileID: 1459091054}
   - component: {fileID: 1459091053}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
