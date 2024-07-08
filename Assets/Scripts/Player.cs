@@ -80,13 +80,40 @@ public class Player : MonoBehaviour, IDestructable
         Destroy(gameObject);
     }
 
-    public bool TryChangeStateToSnowflake()
+    public void ChangeStateToSnowFlake()
+    {
+        if (TryChangeStateToSnowflake() == false)
+        {
+            Debug.Log("Not Enough Message");
+        }
+    }
+
+    private bool TryChangeStateToSnowflake()
     {
         if (_curentState is SnowflakeState || _curentState is IcycleState)
             return false;
 
         if (_pool.TryReduce(_states.SnowflakeState.TransformCost))
             ChangeState(_states.SnowflakeState);
+
+        return false;
+    }
+
+    public void ChangeStateToSteam()
+    {
+        if (TryChangeStateToSteam() == false)
+        {
+            Debug.Log("Not Enough Message");
+        }
+    }
+
+    private bool TryChangeStateToSteam() //ToDo: Try DRY
+    {
+        if (_curentState is SteamState || _curentState is IcycleState)
+            return false;
+
+        if (_pool.TryReduce(_states.SteamState.TransformCost))
+            ChangeState(_states.SteamState);
 
         return false;
     }

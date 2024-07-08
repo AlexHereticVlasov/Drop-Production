@@ -187,14 +187,14 @@ MonoBehaviour:
       <SizeWiddth>k__BackingField: 1
     <SteamState>k__BackingField:
       <CollisionCost>k__BackingField: 10
-      <TransformCost>k__BackingField: 0
+      <TransformCost>k__BackingField: 10
       <FallingSpeed>k__BackingField: 0
       <SideSpeed>k__BackingField: 0
       <Length>k__BackingField: 10
       <SizeWiddth>k__BackingField: 0
     <SnowflakeState>k__BackingField:
       <CollisionCost>k__BackingField: 10
-      <TransformCost>k__BackingField: 0
+      <TransformCost>k__BackingField: 10
       <FallingSpeed>k__BackingField: 0
       <SideSpeed>k__BackingField: 0
       <Length>k__BackingField: 10

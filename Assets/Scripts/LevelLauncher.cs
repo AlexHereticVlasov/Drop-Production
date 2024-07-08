@@ -14,9 +14,13 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private AllLevels _levels;
     [SerializeField] private WaterPool _pool;
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
-
+    
+    [Header("User Interface")]
     [SerializeField] private Button _leftButton;
     [SerializeField] private Button _rightButton;
+    [SerializeField] private Button _snowButton;
+    [SerializeField] private Button _steamButton;
+    
 
     private void Start()
     {
@@ -42,6 +46,7 @@ public class LevelLauncher : MonoBehaviour
 
             var player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
             var cameraAnker = Instantiate(_cameraAnkerTemplate, Vector2.zero, Quaternion.identity);
+            
             player.Init(_pool);
             cameraAnker.Init(player.transform);
 
@@ -49,6 +54,8 @@ public class LevelLauncher : MonoBehaviour
             var playerMovement = player.GetComponent<PlayerMovement>();
             _leftButton.onClick.AddListener(playerMovement.MoveLeft);
             _rightButton.onClick.AddListener(playerMovement.MoveRight);
+            _snowButton.onClick.AddListener(player.ChangeStateToSnowFlake);
+            _steamButton.onClick.AddListener(player.ChangeStateToSteam);
         }
     }
 }
