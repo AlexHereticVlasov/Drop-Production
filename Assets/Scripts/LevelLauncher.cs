@@ -20,6 +20,10 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private Button _rightButton;
     [SerializeField] private Button _snowButton;
     [SerializeField] private Button _steamButton;
+    [SerializeField] private Button _pauseButton;
+    [SerializeField] private PauseMenu _pauseMenu;
+
+    private Pause _pause;
     
 
     private void Start()
@@ -56,6 +60,11 @@ public class LevelLauncher : MonoBehaviour
             _rightButton.onClick.AddListener(playerMovement.MoveRight);
             _snowButton.onClick.AddListener(player.ChangeStateToSnowFlake);
             _steamButton.onClick.AddListener(player.ChangeStateToSteam);
+
+            _pause = new Pause();
+            _pauseButton.onClick.AddListener(_pause.SetPause);
+            //ToDo: Resume Button
+            _pauseMenu.Init(_pause);
         }
     }
 }
