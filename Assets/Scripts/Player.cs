@@ -7,9 +7,11 @@ public class Player : MonoBehaviour, IDestructable
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private BaseState _curentState;
     [SerializeField] private StatesBeen _states;
+    [SerializeField] private ColorBean _bean;
 
     private bool _canBeHited = true;
     private ColorHandler _colorHandler;
+    private DropView _dropView;
     private Timer _timer;
     private DropSize _size;
 
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour, IDestructable
     {
         _size = new DropSize(transform, StartCoroutine);
         _colorHandler = new ColorHandler();
+        _dropView = new DropView(GetComponent<SpriteRenderer>(), _bean, _colorHandler);
         ChangeState(_states.DropState);
     }
 
@@ -53,6 +56,8 @@ public class Player : MonoBehaviour, IDestructable
         _colorHandler.ThreeInRow -= OnThreeInRow;
         if (_timer != null)
             _timer.TimeIsRunningOut -= OnTimeIsRunningOut;
+
+        _dropView.Deinitialize();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
