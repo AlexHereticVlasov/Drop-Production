@@ -8,7 +8,10 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private Confinder _confinder;
     [SerializeField] private Transform _anker;
 
+    [Header("Level To Laod")]
     [SerializeField] private TextAsset _textAsset;
+
+    [Header("Prefabs")]
     [SerializeField] private Obsticle _staticObsticleTemplate;
     [SerializeField] private ObsticleMovement _movingObsticleTemplate;
 

@@ -15,12 +15,15 @@ public class Player : MonoBehaviour, IDestructable
     private Timer _timer;
     private DropSize _size;
 
+    public bool WasHited { get; private set; }
+
     public void Init(WaterPool pool)
     {
         _pool = pool;
         _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
         _movement.Init(_size, ref _curentState);
+       
     }
 
     private void OnValueChanged(float value, float max)
@@ -141,6 +144,7 @@ public class Player : MonoBehaviour, IDestructable
     public void Hit(Obsticle obsticle)
     {
         if (_canBeHited == false) return;
+        WasHited = true;
 
         if (_curentState is IcycleState)
         {
