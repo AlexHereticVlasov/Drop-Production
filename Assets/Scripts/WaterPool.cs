@@ -9,6 +9,15 @@ public sealed class WaterPool : MonoBehaviour
     public event UnityAction<float, float> ValueChanged;
     public event UnityAction WaterIsOver;
 
+    //hack: Temp solution, use SetValue(newValue);
+    private void Start() => ValueChanged?.Invoke(_value, _max);
+
+    public void Init(int value)
+    {
+        _value = value;
+        ValueChanged?.Invoke(_value, _max);
+    }
+
     public bool TryReduce(int amount)
     {
         if (_value >= amount)
