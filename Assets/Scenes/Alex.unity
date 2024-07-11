@@ -477,7 +477,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Easy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1551,6 +1551,7 @@ GameObject:
   - component: {fileID: 625539605}
   - component: {fileID: 625539606}
   - component: {fileID: 625539607}
+  - component: {fileID: 625539608}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1622,19 +1623,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelPanel: {fileID: 504243780}
   _content: {fileID: 880516314}
-  _loader: {fileID: 625539606}
-  _bonusSpawner: {fileID: 625539602}
   _levels: {fileID: 11400000, guid: 6a7c767d9ff4b2540b707909c70223bf, type: 2}
-  _pool: {fileID: 625539604}
-  _virtualCamera: {fileID: 1903220316}
+  _waterRequres: {fileID: 11400000, guid: 49cf47ada448c2e4ba50acf6d3d4b284, type: 2}
   _playerTemplate: {fileID: 6912345932930117381, guid: 46b8bf3497e239f4898ecb293a4c43d0, type: 3}
   _cameraAnkerTemplate: {fileID: 5943773418772286377, guid: ff98bc96c6ca4454c8fcebc76dfe26ba, type: 3}
   _template: {fileID: -7395622672261064112, guid: 1c946d97fb810c244b19da5035a0ec6f, type: 3}
-  _leftButton: {fileID: 1063585055}
-  _rightButton: {fileID: 973952084}
-  _snowButton: {fileID: 1454579005}
-  _steamButton: {fileID: 897034839}
-  _difficultySlider: {fileID: 1758196876}
+  _loader: {fileID: 625539606}
+  _bonusSpawner: {fileID: 625539602}
+  _waterPool: {fileID: 625539604}
+  _mainPool: {fileID: 625539608}
+  _difficultyBuilder:
+    _difficultySlider: {fileID: 1758196876}
+    _text: {fileID: 223544180}
   _pauseBuilder:
     _pauseButton: {fileID: 1459091053}
     _pauseResumeButton: {fileID: 1698563819}
@@ -1676,6 +1676,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panel: {fileID: 173880650}
+--- !u!114 &625539608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625539601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397ef32ee9acae54ab47114e910ce561, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &640338877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2915,8 +2927,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1675064142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4299,7 +4311,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 2
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4677,7 +4689,7 @@ RectTransform:
   m_Father: {fileID: 1174050790}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

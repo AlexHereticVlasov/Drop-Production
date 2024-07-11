@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IDestructable
         _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
         _movement.Init(_size, ref _curentState);
+       
     }
 
     private void OnValueChanged(float value, float max)
