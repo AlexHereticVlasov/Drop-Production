@@ -101,7 +101,7 @@ public sealed class DifficultyHandler
 
     public void SetDifficulty(float value)
     {
-        _value = (Difficulty)value;
+        _value = (Difficulty)(2 - value);
         ValueChanged?.Invoke(_value);
     }
 
