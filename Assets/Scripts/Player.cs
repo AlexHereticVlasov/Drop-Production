@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDestructable
 {
@@ -14,6 +15,10 @@ public class Player : MonoBehaviour, IDestructable
     private DropView _dropView;
     private Timer _timer;
     private DropSize _size;
+
+    public event UnityAction<Player> Victory;
+    public event UnityAction Lose;
+
 
     public bool WasHited { get; private set; }
 
@@ -73,12 +78,14 @@ public class Player : MonoBehaviour, IDestructable
     {
         if (collision.transform.TryGetComponent(out Earth earth))
         {
+            Victory?.Invoke(this);
             Debug.Log("Victory");
         }
     }
 
     private void OnWaterIsOver()
     {
+        Lose?.Invoke();
         Debug.Log("Lose");
         Destroy(gameObject);
     }

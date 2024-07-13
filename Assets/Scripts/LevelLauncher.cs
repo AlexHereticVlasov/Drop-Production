@@ -69,6 +69,15 @@ public class LevelLauncher : MonoBehaviour
         cameraAnker.Init(player.transform);
         _controlBuilder.BuildControl(player, cameraAnker);
         _waterPool.Init(amount);
+
+        player.Victory += OnVictory;
+    }
+
+    private void OnVictory(Player player)
+    {
+        //Remove Camera target
+        //Play Flower Animation
+        //Show Victory Window
     }
 }
 
