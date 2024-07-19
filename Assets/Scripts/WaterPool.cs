@@ -24,7 +24,7 @@ public sealed class WaterPool : BasePool
 
 public abstract class BasePool : MonoBehaviour
 {
-    private int _value = 100;
+    [SerializeField] private int _value = 100;
 
     public int Value
     {
@@ -36,7 +36,7 @@ public abstract class BasePool : MonoBehaviour
         }
     }
 
-    public int Max { get; private set; } = 100;
+    [field: SerializeField] public int Max { get; private set; } = 100;
 
     public event UnityAction<float, float> ValueChanged;
     
