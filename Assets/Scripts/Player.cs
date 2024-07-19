@@ -27,27 +27,21 @@ public class Player : MonoBehaviour, IDestructable
         _pool = pool;
         _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
+
+        _size = new DropSize(transform, StartCoroutine);
+        _colorHandler = new ColorHandler();
+        _dropView = new DropView(GetComponent<SpriteRenderer>(), _bean, _colorHandler);
+        ChangeState(_states.DropState);
+
         _movement.Init(_size, ref _curentState);
-       
+
+        _colorHandler.ThreeInRow += OnThreeInRow;
     }
 
     private void OnValueChanged(float value, float max)
     {
         if (_curentState is DropState)
             _size.ChangeSize(value / max);
-    }
-
-    private void Awake()
-    {
-        _size = new DropSize(transform, StartCoroutine);
-        _colorHandler = new ColorHandler();
-        _dropView = new DropView(GetComponent<SpriteRenderer>(), _bean, _colorHandler);
-        ChangeState(_states.DropState);
-    }
-
-    private void OnEnable()
-    {
-        _colorHandler.ThreeInRow += OnThreeInRow;
     }
 
     private void OnThreeInRow() => ChangeState(_states.IcycleState);
@@ -61,7 +55,9 @@ public class Player : MonoBehaviour, IDestructable
     private void OnDisable()
     {
         _pool.WaterIsOver -= OnWaterIsOver;
+        _pool.ValueChanged -= OnValueChanged;
         _colorHandler.ThreeInRow -= OnThreeInRow;
+
         if (_timer != null)
             _timer.TimeIsRunningOut -= OnTimeIsRunningOut;
 
@@ -71,15 +67,16 @@ public class Player : MonoBehaviour, IDestructable
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out BaseBonus baseBonus))
+        {
             baseBonus.Apply(this);
-    }
+            return;
+        }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (collision.transform.TryGetComponent(out Earth earth))
         {
             Victory?.Invoke(this);
             Debug.Log("Victory");
+            return;
         }
     }
 

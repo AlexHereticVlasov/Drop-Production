@@ -7,6 +7,7 @@ using UserInterface;
 public class LevelLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject _levelPanel;
+    [SerializeField] private GameObject _victoryPanel;
     [SerializeField] private Transform _content;
 
     [Header("Data")]
@@ -26,6 +27,8 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private DifficultyBuilder _difficultyBuilder;
     [SerializeField] private PauseBuilder _pauseBuilder;
     [SerializeField] private ControlBuilder _controlBuilder;
+
+    private Player _player;
 
     private void Start()
     {
@@ -62,22 +65,33 @@ public class LevelLauncher : MonoBehaviour
         _levelPanel.SetActive(false);
         _bonusSpawner.Launch();
 
-        var player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
+         _player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
         var cameraAnker = Instantiate(_cameraAnkerTemplate, Vector2.zero, Quaternion.identity);
 
-        player.Init(_waterPool);
-        cameraAnker.Init(player.transform);
-        _controlBuilder.BuildControl(player, cameraAnker);
+        _player.Init(_waterPool);
+        cameraAnker.Init(_player.transform);
+        _controlBuilder.BuildControl(_player, cameraAnker);
         _waterPool.Init(amount);
 
-        player.Victory += OnVictory;
+        _player.Victory += OnVictory;
     }
 
     private void OnVictory(Player player)
     {
         //Remove Camera target
+
         //Play Flower Animation
+
         //Show Victory Window
+        _victoryPanel.SetActive(true);
+    }
+
+    public void ShowLevelMenu()
+    {
+        _victoryPanel.SetActive(false);
+        _levelPanel.SetActive(true);
+        Destroy(_player.gameObject);
+        _bonusSpawner.Stop();
     }
 }
 
