@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 3947958039037731609}
   _renderer: {fileID: 3705273030713763270}
-  _speed: 2
+  _speed: 4
 --- !u!114 &3309553142706703718
 MonoBehaviour:
   m_ObjectHideFlags: 0

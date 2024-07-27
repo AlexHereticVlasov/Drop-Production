@@ -5,10 +5,13 @@ using UnityEngine;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Earth _earth;
-    [SerializeField] private Confinder _confinder;
+    [SerializeField] private Confiner _confinder;
     [SerializeField] private Transform _anker;
 
+    [Header("Level To Laod")]
     [SerializeField] private TextAsset _textAsset;
+
+    [Header("Prefabs")]
     [SerializeField] private Obsticle _staticObsticleTemplate;
     [SerializeField] private ObsticleMovement _movingObsticleTemplate;
 
@@ -47,7 +50,7 @@ public class LevelLoader : MonoBehaviour
     public void Save()
     {
         var LevelData = new LevelData();
-        LevelData.ConfinderSaveableData = _confinder.GetData() as ConfinderSaveableData;
+        LevelData.ConfinderSaveableData = _confinder.GetData() as ConfinerSaveableData;
         LevelData.EarthSaveableData = _earth.GetData() as EarthSaveableData;
 
         var obsticleDatas = new List<ObsticleSaveableData>();
@@ -77,7 +80,7 @@ public class LevelLoader : MonoBehaviour
 [System.Serializable]
 public sealed class LevelData
 {
-    public ConfinderSaveableData ConfinderSaveableData;
+    public ConfinerSaveableData ConfinderSaveableData;
     public EarthSaveableData EarthSaveableData;
     public List<ObsticleSaveableData> ObsticleSaveableDatas;
     public List<MovingObsticleSaveableData> MovingObsticleSaveableDatas;

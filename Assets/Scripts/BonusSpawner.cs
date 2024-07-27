@@ -12,6 +12,8 @@ public sealed class BonusSpawner : MonoBehaviour
 
     public void Launch() => StartCoroutine(Work());
 
+    public void Stop() => StopAllCoroutines();
+
     private IEnumerator Work()
     {
         while (true)
