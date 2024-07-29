@@ -11,6 +11,7 @@ public sealed class Obsticle : MonoBehaviour, ISaveableItem
         if (Application.isEditor == false || Application.isPlaying) return;
 
         GetComponent<BoxCollider2D>().size = _bean[_index].ColliderSize;
+        GetComponent<BoxCollider2D>().offset = _bean[_index].Offset;
         GetComponent<SpriteRenderer>().sprite = _bean[_index].Sprite;
     }
 
@@ -37,6 +38,7 @@ public sealed class Obsticle : MonoBehaviour, ISaveableItem
             transform.position = obsticleSaveableData.Position;
             _index = obsticleSaveableData.Index;
             GetComponent<BoxCollider2D>().size = _bean[_index].ColliderSize;
+            GetComponent<BoxCollider2D>().offset = _bean[_index].Offset;
             GetComponent<SpriteRenderer>().sprite = _bean[_index].Sprite;
         }
     }
