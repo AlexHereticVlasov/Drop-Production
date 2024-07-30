@@ -1,0 +1,109 @@
+капелька.png
+size:1966,704
+filter:Linear,Linear
+pma:true
+drop blue
+bounds:281,290,276,412
+drop red
+bounds:446,12,276,412
+rotate:90
+drop yellow
+bounds:559,290,276,412
+eye red1
+bounds:1914,637,46,65
+offsets:1,1,48,67
+eye steam red1
+bounds:1914,637,46,65
+offsets:1,1,48,67
+eye red2
+bounds:1914,570,46,65
+offsets:1,1,48,67
+eye steam red2
+bounds:1914,570,46,65
+offsets:1,1,48,67
+eye staem yellow2
+bounds:1914,503,46,65
+offsets:1,1,48,67
+eye yellow2
+bounds:1914,503,46,65
+offsets:1,1,48,67
+eye steam yellow1
+bounds:1914,436,46,65
+offsets:1,1,48,67
+eye yellow1
+bounds:1914,436,46,65
+offsets:1,1,48,67
+eye steam1
+bounds:1914,369,46,65
+offsets:1,1,48,67
+eye1
+bounds:1914,369,46,65
+offsets:1,1,48,67
+eye steam2
+bounds:1914,302,46,65
+offsets:1,1,48,67
+eye2
+bounds:1914,302,46,65
+offsets:1,1,48,67
+snowflake
+bounds:1555,301,401,357
+offsets:1,1,403,359
+rotate:90
+snowflake eye red2
+bounds:2,2,72,55
+offsets:1,1,74,57
+snowflake eye1
+bounds:76,2,72,55
+offsets:1,1,74,57
+snowflake eye2
+bounds:150,2,72,55
+offsets:1,1,74,57
+snowflake piece
+bounds:384,125,53,54
+offsets:1,1,55,56
+rotate:90
+snowflake piece red
+bounds:384,235,53,54
+offsets:1,1,55,56
+rotate:90
+snowflake piece yellow
+bounds:384,180,53,54
+offsets:1,1,55,56
+rotate:90
+snowflake red
+bounds:837,301,401,357
+offsets:1,1,403,359
+rotate:90
+snowflake yellow
+bounds:1196,301,401,357
+offsets:1,1,403,359
+rotate:90
+snowflake yellow eye1
+bounds:224,2,72,55
+offsets:1,1,74,57
+snowflake yellow eye2
+bounds:298,2,72,55
+offsets:1,1,74,57
+snpwflake eye red1
+bounds:372,2,72,55
+offsets:1,1,74,57
+steam
+bounds:1470,4,303,295
+steam piece
+bounds:1775,100,199,189
+offsets:1,1,201,191
+rotate:90
+steam piece red
+bounds:2,59,199,189
+offsets:1,1,201,191
+rotate:90
+steam piece yellow
+bounds:193,59,199,189
+offsets:1,1,201,191
+rotate:90
+steam red
+bounds:860,4,303,295
+steam yellow
+bounds:1165,4,303,295
+сосулька
+bounds:2,260,277,442
