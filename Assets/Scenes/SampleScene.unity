@@ -715,7 +715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 66.7
+  m_fontSize: 70.55
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -970,7 +970,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.15
+  m_fontSize: 71.05
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1216,8 +1216,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a1b94490611878c48ab5b9bb487b5bd1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1924,6 +1924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef2cd0ca1c2bb564a9298426dfca5529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _value: 100
+  <Max>k__BackingField: 100
 --- !u!114 &625539605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,16 +1939,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelPanel: {fileID: 504243780}
-  _playerTemplate: {fileID: 6912345932930117381, guid: 46b8bf3497e239f4898ecb293a4c43d0, type: 3}
+  _victoryPanel: {fileID: 0}
   _content: {fileID: 880516314}
+  _levels: {fileID: 11400000, guid: 6a7c767d9ff4b2540b707909c70223bf, type: 2}
+  _waterRequres: {fileID: 0}
+  _playerTemplate: {fileID: 6912345932930117381, guid: 46b8bf3497e239f4898ecb293a4c43d0, type: 3}
+  _cameraAnkerTemplate: {fileID: 0}
   _template: {fileID: -7395622672261064112, guid: 1c946d97fb810c244b19da5035a0ec6f, type: 3}
   _loader: {fileID: 625539606}
   _bonusSpawner: {fileID: 625539602}
-  _levels: {fileID: 11400000, guid: 6a7c767d9ff4b2540b707909c70223bf, type: 2}
-  _pool: {fileID: 625539604}
-  _virtualCamera: {fileID: 1903220316}
-  _leftButton: {fileID: 1063585055}
-  _rightButton: {fileID: 973952084}
+  _waterPool: {fileID: 0}
+  _mainPool: {fileID: 0}
+  _difficultyBuilder:
+    _difficultySlider: {fileID: 0}
+    _text: {fileID: 0}
+  _pauseBuilder:
+    _pauseButton: {fileID: 0}
+    _pauseResumeButton: {fileID: 0}
+    _pauseMenu: {fileID: 0}
+  _controlBuilder:
+    _leftButton: {fileID: 0}
+    _rightButton: {fileID: 0}
+    _snowButton: {fileID: 0}
+    _steamButton: {fileID: 0}
+    _virtualCamera: {fileID: 0}
 --- !u!114 &625539606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3243,8 +3259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c988c694a053a43adf4574f1095112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bar: {fileID: 2015075511}
-  _pool: {fileID: 625539604}
 --- !u!1 &1137103607
 GameObject:
   m_ObjectHideFlags: 0
@@ -5341,6 +5355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 2027523281}
+  _cinemachineConfiner: {fileID: 0}
 --- !u!1 &2096717153
 GameObject:
   m_ObjectHideFlags: 0
