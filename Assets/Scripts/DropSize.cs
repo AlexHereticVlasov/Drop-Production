@@ -29,13 +29,13 @@ public class DropSize
 
     private IEnumerator ChangeSizeSmoothly(float targetSize)
     {
-        float factor = 0;
+        //float factor = 0;
 
-        while (factor < 1)
-        {
-            factor += Time.deltaTime * .5f;
-            _transform.localScale = Vector2.Lerp(_transform.localScale, Vector2.one * targetSize, factor);
+        //while (factor < 1)
+        //{
+        //    factor += Time.deltaTime * .5f;
+        //    _transform.localScale = Vector2.Lerp(_transform.localScale, Vector2.one * targetSize, factor);
             yield return null;
-        }
+        //}
     }
 }
