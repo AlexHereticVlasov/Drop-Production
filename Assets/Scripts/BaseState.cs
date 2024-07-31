@@ -5,10 +5,11 @@ public abstract class BaseState
 {
     [field: SerializeField] public int CollisionCost { get; private set; }
     [field: SerializeField] public int TransformCost { get; private set; }
-    [field: SerializeField] public float FallingSpeed { get; internal set; }
-    [field: SerializeField] public float SideSpeed { get; internal set; }
-    [field: SerializeField] public float Length { get; internal set; }
-    [field: SerializeField] public float SizeWiddth { get; internal set; }
+    [field: SerializeField] public float FallingSpeed { get; private set; }
+    [field: SerializeField] public float SideSpeed { get; private set; }
+    [field: SerializeField] public float Length { get; private set; }
+    [field: SerializeField] public float SizeWiddth { get; private set; }
+    [field: SerializeField] public DropStates State { get; private set; }
 }
 
 [System.Serializable]

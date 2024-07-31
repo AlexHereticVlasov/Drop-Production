@@ -186,6 +186,7 @@ MonoBehaviour:
       <SideSpeed>k__BackingField: 2
       <Length>k__BackingField: -1
       <SizeWiddth>k__BackingField: 1
+      <State>k__BackingField: 0
     <SteamState>k__BackingField:
       <CollisionCost>k__BackingField: 10
       <TransformCost>k__BackingField: 10
@@ -193,13 +194,15 @@ MonoBehaviour:
       <SideSpeed>k__BackingField: 0
       <Length>k__BackingField: 10
       <SizeWiddth>k__BackingField: 0
+      <State>k__BackingField: 2
     <SnowflakeState>k__BackingField:
       <CollisionCost>k__BackingField: 10
       <TransformCost>k__BackingField: 10
-      <FallingSpeed>k__BackingField: 0
-      <SideSpeed>k__BackingField: 0
+      <FallingSpeed>k__BackingField: 2
+      <SideSpeed>k__BackingField: 2
       <Length>k__BackingField: 10
       <SizeWiddth>k__BackingField: 0
+      <State>k__BackingField: 1
     <IcycleState>k__BackingField:
       <CollisionCost>k__BackingField: 10
       <TransformCost>k__BackingField: 0
@@ -207,7 +210,7 @@ MonoBehaviour:
       <SideSpeed>k__BackingField: 1
       <Length>k__BackingField: 10
       <SizeWiddth>k__BackingField: 0
-  _bean: {fileID: 11400000, guid: 5029bc74ae79cba49aed77bba39eb270, type: 2}
+      <State>k__BackingField: 3
 --- !u!1001 &7830762053190364030
 PrefabInstance:
   m_ObjectHideFlags: 0

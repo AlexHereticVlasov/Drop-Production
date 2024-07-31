@@ -2,13 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour, IDestructable
+public class Player : MonoBehaviour, IDestructable, IStateObservable
 {
     [SerializeField] private WaterPool _pool;
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private BaseState _curentState;
     [SerializeField] private StatesBeen _states;
-    [SerializeField] private ColorBean _bean;
 
     private bool _canBeHited = true;
     private ColorHandler _colorHandler;
@@ -16,9 +15,9 @@ public class Player : MonoBehaviour, IDestructable
     private Timer _timer;
     private DropSize _size;
 
+    public event UnityAction<DropStates> StateChanged;
     public event UnityAction<Player> Victory;
     public event UnityAction Lose;
-
 
     public bool WasHited { get; private set; }
 
@@ -28,9 +27,9 @@ public class Player : MonoBehaviour, IDestructable
         _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
 
-        _size = new DropSize(transform, StartCoroutine);
+        _size = new DropSize(transform, StartCoroutine, GameObject.FindGameObjectWithTag("XYINJA").GetComponent<Spine.Unity.SkeletonUtilityBone>());
         _colorHandler = new ColorHandler();
-        _dropView = new DropView(GetComponent<SpriteRenderer>(), _bean, _colorHandler);
+        _dropView = new DropView(GetComponentInChildren<Spine.Unity.SkeletonAnimation>(), _colorHandler, this);
         ChangeState(_states.DropState);
 
         _movement.Init(_size, ref _curentState);
@@ -135,6 +134,7 @@ public class Player : MonoBehaviour, IDestructable
     {
         _movement.SetSpeed(state);
         _curentState = state;
+        StateChanged?.Invoke(_curentState.State);
 
         if (_curentState.Length > 0)
             SetTimer(_curentState.Length);
