@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Spine.Unity;
 
 public class DropSize
 {
+    private SkeletonUtilityBone _IK;
     private Transform _transform;
     private Func< IEnumerator, Coroutine> _corutine;
     public float Size { get; private set; } = 1;
 
-    public DropSize(Transform transform, Func<IEnumerator, Coroutine> func)
+    public DropSize(Transform transform, Func<IEnumerator, Coroutine> func, SkeletonUtilityBone utilityBone)
     {
+        _IK = utilityBone;
+        _IK.mode = SkeletonUtilityBone.Mode.Override;
+
         _transform = transform;
         _corutine = func;
     }
