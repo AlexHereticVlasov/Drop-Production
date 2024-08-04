@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,8 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private BaseState _curentState;
     [SerializeField] private StatesBeen _states;
+    [SerializeField] private CircleCollider2D _circleCollider;
+    [SerializeField] private SkeletonUtilityBone _IKBone;
 
     private bool _canBeHited = true;
     private ColorHandler _colorHandler;
@@ -27,9 +30,9 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
         _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
 
-        _size = new DropSize(transform, StartCoroutine, GameObject.FindGameObjectWithTag("XYINJA").GetComponent<Spine.Unity.SkeletonUtilityBone>());
+        _size = new DropSize(_circleCollider, StartCoroutine, _IKBone);
         _colorHandler = new ColorHandler();
-        _dropView = new DropView(GetComponentInChildren<Spine.Unity.SkeletonAnimation>(), _colorHandler, this);
+        _dropView = new DropView(GetComponentInChildren<SkeletonAnimation>(), _colorHandler, this);
         ChangeState(_states.DropState);
 
         _movement.Init(_size, ref _curentState);
