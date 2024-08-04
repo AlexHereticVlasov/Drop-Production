@@ -28,6 +28,8 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private PauseBuilder _pauseBuilder;
     [SerializeField] private ControlBuilder _controlBuilder;
 
+    private Background _background;
+
     private Player _player;
 
     private void Start()

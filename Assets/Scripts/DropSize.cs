@@ -12,9 +12,10 @@ public class DropSize
     private readonly Vector2 _maxOffset = new Vector2(0, -0.27f);
     private readonly Vector2 _minOffset = new Vector2(0, -0.525f);
 
-    private SkeletonUtilityBone _IK;
-    private CircleCollider2D _collider;
-    private Func< IEnumerator, Coroutine> _corutine;
+    private readonly SkeletonUtilityBone _IK;
+    private readonly CircleCollider2D _collider;
+    private readonly Func< IEnumerator, Coroutine> _corutine;
+
     public float Size { get; private set; } = 1;
 
     public DropSize(CircleCollider2D circleCollider, Func<IEnumerator, Coroutine> func, SkeletonUtilityBone utilityBone)
@@ -26,12 +27,10 @@ public class DropSize
         _corutine = func;
     }
 
-    public void ChangeSize() => _corutine(ChangeSizeSmoothly(Size));
-
-    public void ChangeSize(float size )
+   public void ChangeSize(float size )
     {
         Size = size;
-        ChangeSize();
+        _corutine(ChangeSizeSmoothly(Size));
     }
 
     private IEnumerator ChangeSizeSmoothly(float targetSize)
@@ -47,7 +46,6 @@ public class DropSize
         {
             factor += Time.deltaTime * 2;
             _IK.transform.localPosition = Vector2.Lerp(start, target, factor);
-            Debug.Log(_IK.transform.localPosition);
             
             yield return null;
         }

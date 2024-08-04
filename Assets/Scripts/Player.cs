@@ -136,16 +136,19 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     private void ChangeState(BaseState state)
     {
         _movement.SetSpeed(state);
+
+        if (state is DropState)
+            _size.ChangeSize(_pool.Value / _pool.Max);
+        else
+            _size.ChangeSize(1);
+
         _curentState = state;
         StateChanged?.Invoke(_curentState.State);
 
         if (_curentState.Length > 0)
             SetTimer(_curentState.Length);
 
-        if (state is DropState)
-            _size.ChangeSize();
-        else
-            _size.ChangeSize(1);
+        
     }
 
     public void Hit(Obsticle obsticle)

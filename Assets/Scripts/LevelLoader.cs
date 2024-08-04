@@ -8,6 +8,8 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private Confiner _confinder;
     [SerializeField] private Transform _anker;
 
+    [Header("Save Name")]
+    [SerializeField] private string _nameOfSave = "newLevel";
     [Header("Level To Laod")]
     [SerializeField] private TextAsset _textAsset;
 
@@ -72,7 +74,7 @@ public class LevelLoader : MonoBehaviour
         LevelData.MovingObsticleSaveableDatas = movingObsticleDatas;
 
         string json = JsonUtility.ToJson(LevelData, true);
-        File.WriteAllText(Application.dataPath + "/testLevel.json", json);
+        File.WriteAllText(Application.dataPath + $"/{_nameOfSave}.json", json);
         Debug.Log("Save");
     }
 }
