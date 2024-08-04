@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class LevelLoader : MonoBehaviour
     private List<Obsticle> _obsticles = new List<Obsticle>();
     private List<ObsticleMovement> _movingObsticles = new List<ObsticleMovement>();
 
+    public event UnityAction<float> EarthPositionChanged;
+
     public void Load() => Load(_textAsset);
 
     public void Load(TextAsset textAsset)
@@ -29,6 +32,7 @@ public class LevelLoader : MonoBehaviour
 
         _confinder.Load(data.ConfinderSaveableData);
         _earth.Load(data.EarthSaveableData);
+        EarthPositionChanged?.Invoke(_earth.transform.position.y);
 
         int count = _anker.childCount;
         for (int i = count - 1; i >= 0; i--)

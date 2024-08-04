@@ -22,7 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
-        float width = _state.SizeWiddth == 1 ? _size.Size : 1; 
+        float width = _state.SizeWiddth == 1 ? _size.Size : 1;
+        Debug.Log(width);
         _transform.Translate(_speed * Time.deltaTime * Vector2.down * width);
     }
 

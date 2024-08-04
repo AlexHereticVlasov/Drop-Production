@@ -138,7 +138,7 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
         _movement.SetSpeed(state);
 
         if (state is DropState)
-            _size.ChangeSize(_pool.Value / _pool.Max);
+            _size.ChangeSize(_pool.Value / (float)_pool.Max);
         else
             _size.ChangeSize(1);
 

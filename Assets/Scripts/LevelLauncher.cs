@@ -28,8 +28,6 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private PauseBuilder _pauseBuilder;
     [SerializeField] private ControlBuilder _controlBuilder;
 
-    private Background _background;
-
     private Player _player;
 
     private void Start()
@@ -46,9 +44,20 @@ public class LevelLauncher : MonoBehaviour
         _difficultyBuilder.Build();
     }
 
+    private void OnEnable()
+    {
+        _loader.EarthPositionChanged += OnEarthPositionChanged;
+    }
+
+    private void OnEarthPositionChanged(float value)
+    {
+        Debug.Log(value);
+    }
+
     private void OnDisable()
     {
         _difficultyBuilder.DeInitialize();
+        _loader.EarthPositionChanged -= OnEarthPositionChanged;
     }
 
     public void Launch(int index)
@@ -64,6 +73,7 @@ public class LevelLauncher : MonoBehaviour
 
         _loader.Load(_levels[index]);
         //ToDo: Init Drop and BonusSpawner;
+
         _levelPanel.SetActive(false);
         _bonusSpawner.Launch();
 
