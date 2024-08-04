@@ -27,6 +27,7 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private DifficultyBuilder _difficultyBuilder;
     [SerializeField] private PauseBuilder _pauseBuilder;
     [SerializeField] private ControlBuilder _controlBuilder;
+    [SerializeField] private Background _background;
 
     private Player _player;
 
@@ -51,7 +52,7 @@ public class LevelLauncher : MonoBehaviour
 
     private void OnEarthPositionChanged(float value)
     {
-        Debug.Log(value);
+        _background.Build((int)value);
     }
 
     private void OnDisable()

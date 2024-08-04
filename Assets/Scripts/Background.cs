@@ -1,22 +1,14 @@
 using UnityEngine;
 
+[System.Serializable]
 public class Background
 {
-    [SerializeField] private Sprite _sprite;
-
-    private readonly Transform _transform;
-
-    public Background(Transform transform)
-    {
-        _transform = transform;
-    }
+    [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private Transform _transform;
 
     public void Build(int width)
     {
-        for (int y = 0; y > width; y-= 15)
-        {
-            var position = new Vector2(0, y);
-            Object.Instantiate(_sprite, position, Quaternion.identity, _transform);
-        }
+        _sprite.size = new Vector2(7.2f, Mathf.Abs(width));
+        _sprite.transform.position = new Vector2(0, width / 2);
     }
 }
