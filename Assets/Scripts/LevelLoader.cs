@@ -16,7 +16,7 @@ public class LevelLoader : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private Obsticle[] _staticObsticleTemplates;
-    [SerializeField] private ObsticleMovement _movingObsticleTemplate;
+    [SerializeField] private ObsticleMovement[] _movingObsticleTemplate;
 
     private List<Obsticle> _obsticles = new List<Obsticle>();
     private List<ObsticleMovement> _movingObsticles = new List<ObsticleMovement>();
@@ -47,7 +47,7 @@ public class LevelLoader : MonoBehaviour
 
         foreach (var item in data.MovingObsticleSaveableDatas)
         {
-            var obsticle = Instantiate(_movingObsticleTemplate, _anker);
+            var obsticle = Instantiate(_movingObsticleTemplate[item.Index], _anker);
             _movingObsticles.Add(obsticle);
             obsticle.Load(item);
         }

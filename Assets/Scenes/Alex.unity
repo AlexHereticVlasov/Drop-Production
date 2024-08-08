@@ -1942,7 +1942,10 @@ MonoBehaviour:
   - {fileID: 7729431158513039772, guid: fb3c7f6997254914f898cbd288f177c5, type: 3}
   - {fileID: 7729431158513039772, guid: cb050b19923da7443907fd1fa24aa501, type: 3}
   - {fileID: 7729431158513039772, guid: 9fa92acf2c819f248becec5887b959d0, type: 3}
-  _movingObsticleTemplate: {fileID: 141936947184962332, guid: 25fdc892fbc25f74d81b30603a59af1a, type: 3}
+  _movingObsticleTemplate:
+  - {fileID: 141936947184962332, guid: 25fdc892fbc25f74d81b30603a59af1a, type: 3}
+  - {fileID: 141936947184962332, guid: 9979fa32ee92574488f32bf7c2c2bcbd, type: 3}
+  - {fileID: 141936947184962332, guid: 65117b76882fc0e4fb8bcd1d4bb2b692, type: 3}
 --- !u!114 &625539607
 MonoBehaviour:
   m_ObjectHideFlags: 0

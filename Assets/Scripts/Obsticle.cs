@@ -1,12 +1,9 @@
-﻿using Spine.Unity;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public sealed class Obsticle : MonoBehaviour, ISaveableItem<ObsticleSaveableData>
 {
     [SerializeField] private int _index;
-    [SerializeField] private SkeletonAnimation _animation;
     [SerializeField] private string[] _keys;
 
     private void OnTriggerEnter2D(Collider2D collision)
