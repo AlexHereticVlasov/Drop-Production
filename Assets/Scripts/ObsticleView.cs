@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+//ToDo: It's Deprecated - To Delete
 [System.Serializable]
 public sealed class ObsticleView
 {

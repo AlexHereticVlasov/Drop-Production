@@ -15,8 +15,8 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private TextAsset _textAsset;
 
     [Header("Prefabs")]
-    [SerializeField] private Obsticle _staticObsticleTemplate;
-    [SerializeField] private ObsticleMovement _movingObsticleTemplate;
+    [SerializeField] private Obsticle[] _staticObsticleTemplates;
+    [SerializeField] private ObsticleMovement[] _movingObsticleTemplate;
 
     private List<Obsticle> _obsticles = new List<Obsticle>();
     private List<ObsticleMovement> _movingObsticles = new List<ObsticleMovement>();
@@ -40,14 +40,14 @@ public class LevelLoader : MonoBehaviour
 
         foreach (var item in data.ObsticleSaveableDatas)
         {
-            var obsticle = Instantiate(_staticObsticleTemplate, _anker);
+            var obsticle = Instantiate(_staticObsticleTemplates[item.Index], _anker);
             _obsticles.Add(obsticle);
             obsticle.Load(item);
         }
 
         foreach (var item in data.MovingObsticleSaveableDatas)
         {
-            var obsticle = Instantiate(_movingObsticleTemplate, _anker);
+            var obsticle = Instantiate(_movingObsticleTemplate[item.Index], _anker);
             _movingObsticles.Add(obsticle);
             obsticle.Load(item);
         }
@@ -56,8 +56,8 @@ public class LevelLoader : MonoBehaviour
     public void Save()
     {
         var LevelData = new LevelData();
-        LevelData.ConfinderSaveableData = _confinder.GetData() as ConfinerSaveableData;
-        LevelData.EarthSaveableData = _earth.GetData() as EarthSaveableData;
+        LevelData.ConfinderSaveableData = _confinder.GetData();
+        LevelData.EarthSaveableData = _earth.GetData();
 
         var obsticleDatas = new List<ObsticleSaveableData>();
         var movingObsticleDatas = new List<MovingObsticleSaveableData>();
@@ -67,9 +67,9 @@ public class LevelLoader : MonoBehaviour
         {
             var child = _anker.GetChild(i);
             if (child.TryGetComponent(out Obsticle obsticle))
-                obsticleDatas.Add(obsticle.GetData() as ObsticleSaveableData);
+                obsticleDatas.Add(obsticle.GetData());
             else if (child.TryGetComponent(out ObsticleMovement movement))
-                movingObsticleDatas.Add(movement.GetData() as MovingObsticleSaveableData);
+                movingObsticleDatas.Add(movement.GetData());
             else
                 Debug.LogWarning("Wrong Type");
         }
