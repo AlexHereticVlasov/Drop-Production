@@ -1,19 +1,13 @@
-﻿using UnityEngine;
+﻿using Spine.Unity;
+using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(SpriteRenderer))]
-public sealed class Obsticle : MonoBehaviour, ISaveableItem
+public sealed class Obsticle : MonoBehaviour, ISaveableItem<ObsticleSaveableData>
 {
-    [SerializeField, Range(0, 2)] private int _index;
-    [SerializeField] private ObsticleViewBean _bean;
-
-    private void OnValidate()
-    {
-        if (Application.isEditor == false || Application.isPlaying) return;
-
-        GetComponent<BoxCollider2D>().size = _bean[_index].ColliderSize;
-        GetComponent<BoxCollider2D>().offset = _bean[_index].Offset;
-        GetComponent<SpriteRenderer>().sprite = _bean[_index].Sprite;
-    }
+    [SerializeField] private int _index;
+    [SerializeField] private SkeletonAnimation _animation;
+    [SerializeField] private string[] _keys;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,20 +20,7 @@ public sealed class Obsticle : MonoBehaviour, ISaveableItem
         Destroy(gameObject);
     }
 
-    public BaseSaveableData GetData()
-    {
-        return new ObsticleSaveableData(_index, transform.position);
-    }
+    public ObsticleSaveableData GetData() => new ObsticleSaveableData(_index, transform.position);
 
-    public void Load(BaseSaveableData data)
-    {
-        if (data is ObsticleSaveableData obsticleSaveableData)
-        {
-            transform.position = obsticleSaveableData.Position;
-            _index = obsticleSaveableData.Index;
-            GetComponent<BoxCollider2D>().size = _bean[_index].ColliderSize;
-            GetComponent<BoxCollider2D>().offset = _bean[_index].Offset;
-            GetComponent<SpriteRenderer>().sprite = _bean[_index].Sprite;
-        }
-    }
+    public void Load(ObsticleSaveableData data) => transform.position = data.Position;
 }
