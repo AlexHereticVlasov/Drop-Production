@@ -7,6 +7,7 @@ public class ObsticleMovement : MonoBehaviour, ISaveableItem<MovingObsticleSavea
     [SerializeField] private Obsticle _obsticle;
     [SerializeField] private Transform[] _points;
     [SerializeField] private float _speed = 1;
+    [SerializeField] private bool _needToFlip;
 
     private Transform _obsticleTransform;
     private int _index;
@@ -33,7 +34,14 @@ public class ObsticleMovement : MonoBehaviour, ISaveableItem<MovingObsticleSavea
             _factor--;
             _index++;
             _index %= _points.Length;
+            TryFlip();
         }
+    }
+
+    private void TryFlip()
+    {
+        if (_needToFlip == false) return;
+        _obsticle.transform.Rotate(0, 180, 0);
     }
 
     private void Move() => _obsticleTransform.position =
