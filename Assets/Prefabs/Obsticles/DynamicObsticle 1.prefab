@@ -84,6 +84,7 @@ MonoBehaviour:
   - {fileID: 1399005349836373169}
   - {fileID: 7533887404220103865}
   _speed: 1
+  _needToFlip: 1
 --- !u!1 &7686849404980069358
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _index: 1
-  _animation: {fileID: 8047876290316780887}
   _keys: []
 --- !u!1001 &3209584021336600639
 PrefabInstance:
@@ -333,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Spine GameObject (\u043F\u0447\u0435\u043B\u0430)"
       objectReference: {fileID: 0}
+    - target: {fileID: 2210024139805462104, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
+      propertyPath: _animationName
+      value: fly2
+      objectReference: {fileID: 0}
     - target: {fileID: 3609991598665699164, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -395,14 +399,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4512864634656030573, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
   m_PrefabInstance: {fileID: 8143732871890881295}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8047876290316780887 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2210024139805462104, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
-  m_PrefabInstance: {fileID: 8143732871890881295}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

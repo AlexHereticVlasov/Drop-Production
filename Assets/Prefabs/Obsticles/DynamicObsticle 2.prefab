@@ -84,6 +84,7 @@ MonoBehaviour:
   - {fileID: 1399005349836373169}
   - {fileID: 7533887404220103865}
   _speed: 1
+  _needToFlip: 1
 --- !u!1 &7686849404980069358
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _index: 2
-  _animation: {fileID: 0}
   _keys: []
 --- !u!1001 &899072321778494490
 PrefabInstance:
@@ -270,6 +270,10 @@ PrefabInstance:
     - target: {fileID: 438282183286489951, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
       propertyPath: m_Name
       value: "Spine GameObject (\u043F\u0447\u0435\u043B\u0430)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2210024139805462104, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
+      propertyPath: _animationName
+      value: fly2
       objectReference: {fileID: 0}
     - target: {fileID: 2210024139805462104, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
       propertyPath: initialSkinName
