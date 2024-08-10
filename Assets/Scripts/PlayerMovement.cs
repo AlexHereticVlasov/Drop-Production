@@ -27,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
         _transform.Translate(_speed * Time.deltaTime * Vector2.down * width);
     }
 
-    public void MoveLeft() => ChangePosition(-1);
-    public void MoveRight() => ChangePosition(1);
+    public void MoveLeft() => TryChangePosition(-1);
+    public void MoveRight() => TryChangePosition(1);
 
-    private void ChangePosition(int direction)
+    private void TryChangePosition(int direction)
     {
         int newIndex = _currentIndex + direction;
-        if (newIndex < 0 || newIndex >= _xPositions.Length)
+        if (CanChangePosition(newIndex))
             return;
 
         _currentIndex = newIndex;
@@ -43,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
         _moveRoutine = StartCoroutine(MoveSmoothly());
     }
+
+    private bool CanChangePosition(int newIndex) => newIndex < 0 ||
+            newIndex >= _xPositions.Length || (int)_state.State > 1;
 
     private IEnumerator MoveSmoothly()
     {
