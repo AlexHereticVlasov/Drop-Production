@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: StaticObsticleViewBean
   m_EditorClassIdentifier: 
   _views:
-  - <Sprite>k__BackingField: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-    <ColliderSize>k__BackingField: {x: 1, y: 1}
-  - <Sprite>k__BackingField: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-    <ColliderSize>k__BackingField: {x: 2, y: 1}
-  - <Sprite>k__BackingField: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-    <ColliderSize>k__BackingField: {x: 3, y: 1}
+  - {fileID: 1802808993583759133, guid: af60803f77c8fe84faafbee3a845394a, type: 3}
+  - {fileID: 1802808993583759133, guid: fb3c7f6997254914f898cbd288f177c5, type: 3}
+  - {fileID: 1802808993583759133, guid: cb050b19923da7443907fd1fa24aa501, type: 3}
+  - {fileID: 1802808993583759133, guid: 9fa92acf2c819f248becec5887b959d0, type: 3}

@@ -1937,8 +1937,15 @@ MonoBehaviour:
   _anker: {fileID: 99855201}
   _nameOfSave: newLevel
   _textAsset: {fileID: 4900000, guid: 4638a4c72a4043f4fa05975f7e9b640b, type: 3}
-  _staticObsticleTemplate: {fileID: 7729431158513039772, guid: af60803f77c8fe84faafbee3a845394a, type: 3}
-  _movingObsticleTemplate: {fileID: 141936947184962332, guid: 25fdc892fbc25f74d81b30603a59af1a, type: 3}
+  _staticObsticleTemplates:
+  - {fileID: 7729431158513039772, guid: af60803f77c8fe84faafbee3a845394a, type: 3}
+  - {fileID: 7729431158513039772, guid: fb3c7f6997254914f898cbd288f177c5, type: 3}
+  - {fileID: 7729431158513039772, guid: cb050b19923da7443907fd1fa24aa501, type: 3}
+  - {fileID: 7729431158513039772, guid: 9fa92acf2c819f248becec5887b959d0, type: 3}
+  _movingObsticleTemplate:
+  - {fileID: 141936947184962332, guid: 25fdc892fbc25f74d81b30603a59af1a, type: 3}
+  - {fileID: 141936947184962332, guid: 9979fa32ee92574488f32bf7c2c2bcbd, type: 3}
+  - {fileID: 141936947184962332, guid: 65117b76882fc0e4fb8bcd1d4bb2b692, type: 3}
 --- !u!114 &625539607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,7 +4990,7 @@ MonoBehaviour:
   physicsMovementRelativeTo: {fileID: 0}
   updateTiming: 1
   unscaledTime: 0
-  _animationName: 
+  _animationName: emo1
   loop: 1
   timeScale: 1
 --- !u!23 &1909670744
