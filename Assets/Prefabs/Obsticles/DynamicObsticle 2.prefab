@@ -83,7 +83,7 @@ MonoBehaviour:
   _points:
   - {fileID: 1399005349836373169}
   - {fileID: 7533887404220103865}
-  _speed: 1
+  _speed: 3
 --- !u!1 &7686849404980069358
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +257,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _index: 2
-  _animation: {fileID: 0}
   _keys: []
 --- !u!1001 &899072321778494490
 PrefabInstance:
