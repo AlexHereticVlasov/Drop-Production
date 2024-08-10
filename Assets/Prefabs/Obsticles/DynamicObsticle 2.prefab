@@ -83,7 +83,7 @@ MonoBehaviour:
   _points:
   - {fileID: 1399005349836373169}
   - {fileID: 7533887404220103865}
-  _speed: 1
+  _speed: 3
   _needToFlip: 1
 --- !u!1 &7686849404980069358
 GameObject:
