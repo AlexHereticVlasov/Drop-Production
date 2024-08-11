@@ -22,7 +22,12 @@ public class ObsticleMovement : MonoBehaviour, ISaveableItem<MovingObsticleSavea
             throw new System.Exception("Moving Obsticle has less then 2 waypoints");
     }
 
-    private void Start() => _distance = 1 / Vector2.Distance(_points[0].position, _points[1].position);
+    private void Start()
+    {
+        _distance = 1 / Vector2.Distance(_points[0].position, _points[1].position);
+        if (NeedToFlip())
+            Flip();
+    }
 
     private void Update()
     {
@@ -41,8 +46,12 @@ public class ObsticleMovement : MonoBehaviour, ISaveableItem<MovingObsticleSavea
     private void TryFlip()
     {
         if (_needToFlip == false) return;
-        _obsticle.transform.Rotate(0, 180, 0);
+        Flip();
     }
+
+    private bool NeedToFlip() => transform.position.x > _points[0].position.x;
+
+    private void Flip() => _obsticle.transform.Rotate(0, 180, 0);
 
     private void Move() => _obsticleTransform.position =
         Vector2.Lerp(_points[_index].position, _points[(_index + 1) %
