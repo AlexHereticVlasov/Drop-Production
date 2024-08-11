@@ -1,5 +1,0 @@
-skeleton.png
-size:383,209
-filter:Linear,Linear
-лист
-bounds:2,2,379,205

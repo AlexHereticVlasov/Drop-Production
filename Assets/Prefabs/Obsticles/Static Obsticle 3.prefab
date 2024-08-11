@@ -33,7 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1681237518837725980}
+  - {fileID: 1269136288335343042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6436404328080451330
@@ -173,7 +173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _index: 3
-  _animation: {fileID: 3774829923852845621}
   _keys:
   - stick1
   - stick2
@@ -185,6 +184,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 974446539072098133}
     m_Modifications:
+    - target: {fileID: 796517985766352443, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2003707509297881650, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -237,6 +240,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2091514633525605612, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.495
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091514633525605612, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4105187261511473947, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
       propertyPath: initialFlipX
       value: 0
@@ -257,6 +268,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Spine GameObject (\u0432\u0435\u0442\u043A\u0438)"
       objectReference: {fileID: 0}
+    - target: {fileID: 5666540837585915599, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: initialFlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666540837585915599, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: initialSkinName
+      value: long stick
+      objectReference: {fileID: 0}
     - target: {fileID: 8529725032807057781, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -274,19 +293,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
---- !u!4 &1681237518837725980 stripped
+--- !u!4 &1269136288335343042 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2003707509297881650, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2091514633525605612, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
   m_PrefabInstance: {fileID: 908158949224225070}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3774829923852845621 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4105187261511473947, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
-  m_PrefabInstance: {fileID: 908158949224225070}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
