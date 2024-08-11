@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.55
+  m_fontSize: 66.95
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.05
+  m_fontSize: 67.45
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 70.8
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4659,6 +4659,7 @@ MonoBehaviour:
   - {fileID: 892456455}
   - {fileID: 913649044}
   _speed: 1
+  _needToFlip: 0
 --- !u!1 &1166422373
 GameObject:
   m_ObjectHideFlags: 0
@@ -7555,6 +7556,7 @@ MonoBehaviour:
   - {fileID: 1855613601}
   - {fileID: 1176982484}
   _speed: 1
+  _needToFlip: 0
 --- !u!1001 &2131427937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7631,4 +7633,3 @@ SceneRoots:
   - {fileID: 2004810263}
   - {fileID: 1704944975}
   - {fileID: 665219662}
-

@@ -10,9 +10,9 @@ public sealed class DropView
 
     private readonly string[,] _keys =
     {
-        {"blue drop","blue snowflake","white steam","icicle"},
-        {"red drop","red snowflake","red steam","icicle"},
-        {"yellow drop","yellow snowflake","yellow steam","icicle"},
+        {"blue drop","blue snowflake","blue steam","blue icicle"},
+        {"red drop","red snowflake","red steam","red icicle"},
+        {"yellow drop","yellow snowflake","yellow steam","yellow icicle"},
     };
 
     public DropView(SkeletonAnimation animation, ColorHandler colorHandler, IStateObservable player)
