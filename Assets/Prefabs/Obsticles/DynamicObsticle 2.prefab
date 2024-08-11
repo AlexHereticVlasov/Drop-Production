@@ -288,6 +288,10 @@ PrefabInstance:
       value: moscito
       objectReference: {fileID: 0}
     - target: {fileID: 2435904863631483174, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
+      propertyPath: _animationName
+      value: fly2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2435904863631483174, guid: cae6bd5d5c96f9445acd301f02105726, type: 3}
       propertyPath: initialSkinName
       value: moscito
       objectReference: {fileID: 0}
