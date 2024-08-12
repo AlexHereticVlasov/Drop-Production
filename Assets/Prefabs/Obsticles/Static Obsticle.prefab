@@ -272,6 +272,10 @@ PrefabInstance:
       propertyPath: initialFlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5666540837585915599, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: initialSkinName
+      value: long stick
+      objectReference: {fileID: 0}
     - target: {fileID: 8529725032807057781, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
       propertyPath: m_Mesh
       value: 
