@@ -34,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1269136288335343042}
+  - {fileID: 5915088727960615063}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6436404328080451330
@@ -43,7 +44,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802808993583759133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -95,7 +96,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802808993583759133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -268,9 +269,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Spine GameObject (\u0432\u0435\u0442\u043A\u0438)"
       objectReference: {fileID: 0}
+    - target: {fileID: 5211450128677876570, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5666540837585915599, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
       propertyPath: initialFlipX
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666540837585915599, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
+      propertyPath: _animationName
+      value: idle
       objectReference: {fileID: 0}
     - target: {fileID: 5666540837585915599, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
       propertyPath: initialSkinName
@@ -297,4 +306,78 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2091514633525605612, guid: 447272904eaa6ab438eb5a53b1b62334, type: 3}
   m_PrefabInstance: {fileID: 908158949224225070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6655914853877450215
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 974446539072098133}
+    m_Modifications:
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.508
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113357099919625651, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915609331014978311, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_Name
+      value: "Spine GameObject (\u0432\u0435\u0442\u043A\u0438) 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4287105888871433379, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: initialFlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406682106158779567, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+--- !u!4 &5915088727960615063 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1029092925706796400, guid: 9af9bf8153e98ec47942fcf168f9ab49, type: 3}
+  m_PrefabInstance: {fileID: 6655914853877450215}
   m_PrefabAsset: {fileID: 0}
