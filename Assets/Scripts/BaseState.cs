@@ -10,6 +10,7 @@ public abstract class BaseState
     [field: SerializeField] public float Length { get; private set; }
     [field: SerializeField] public float SizeWiddth { get; private set; }
     [field: SerializeField] public DropStates State { get; private set; }
+    [field: SerializeField] public Collider2D Collider2D { get; private set; }
 }
 
 [System.Serializable]
