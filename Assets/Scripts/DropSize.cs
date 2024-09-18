@@ -9,8 +9,8 @@ public class DropSize
     private readonly Vector2 _min = new Vector2(4.25f, 2);
     private readonly float _maxSize = 0.5f;
     private readonly float _minSize = 0.25f;
-    private readonly Vector2 _maxOffset = new Vector2(0, -0.27f);
-    private readonly Vector2 _minOffset = new Vector2(0, -0.525f);
+    private readonly Vector2 _maxOffset = new Vector2(0, 0.6f);
+    private readonly Vector2 _minOffset = new Vector2(0, 0.4f);
 
     private readonly SkeletonUtilityBone _IK;
     private readonly CircleCollider2D _collider;

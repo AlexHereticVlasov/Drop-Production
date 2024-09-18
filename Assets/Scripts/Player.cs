@@ -142,7 +142,13 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
         else
             _size.ChangeSize(1);
 
+        if (_curentState != null)
+        {
+        _curentState.Collider2D.enabled = false;
+        }
         _curentState = state;
+        _curentState.Collider2D.enabled = true;
+
         StateChanged?.Invoke(_curentState.State);
 
         if (_curentState.Length > 0)
