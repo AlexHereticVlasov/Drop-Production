@@ -2430,7 +2430,7 @@ MonoBehaviour:
   _movement: {fileID: 7281472467173490247}
   _states:
     <DropState>k__BackingField:
-      <CollisionCost>k__BackingField: 10
+      <CollisionCost>k__BackingField: 20
       <TransformCost>k__BackingField: 0
       <FallingSpeed>k__BackingField: 4
       <SideSpeed>k__BackingField: 4
@@ -2438,7 +2438,7 @@ MonoBehaviour:
       <SizeWiddth>k__BackingField: 1
       <State>k__BackingField: 0
     <SteamState>k__BackingField:
-      <CollisionCost>k__BackingField: 10
+      <CollisionCost>k__BackingField: 20
       <TransformCost>k__BackingField: 10
       <FallingSpeed>k__BackingField: 0
       <SideSpeed>k__BackingField: 0
@@ -2446,7 +2446,7 @@ MonoBehaviour:
       <SizeWiddth>k__BackingField: 0
       <State>k__BackingField: 2
     <SnowflakeState>k__BackingField:
-      <CollisionCost>k__BackingField: 10
+      <CollisionCost>k__BackingField: 20
       <TransformCost>k__BackingField: 10
       <FallingSpeed>k__BackingField: 3
       <SideSpeed>k__BackingField: 5
@@ -2454,7 +2454,7 @@ MonoBehaviour:
       <SizeWiddth>k__BackingField: 0
       <State>k__BackingField: 1
     <IcycleState>k__BackingField:
-      <CollisionCost>k__BackingField: 10
+      <CollisionCost>k__BackingField: 0
       <TransformCost>k__BackingField: 0
       <FallingSpeed>k__BackingField: 4
       <SideSpeed>k__BackingField: 0
