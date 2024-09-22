@@ -21,6 +21,7 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     public event UnityAction<DropStates> StateChanged;
     public event UnityAction<Player> Victory;
     public event UnityAction Lose;
+    public event UnityAction Hited;
 
     public bool WasHited { get; private set; }
 
@@ -161,6 +162,12 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     {
         if (_canBeHited == false) return;
         WasHited = true;
+
+        if (_curentState is DropState)
+        {
+            Debug.Log("Play Hit Anim");
+            Hited?.Invoke();
+        }
 
         if (_curentState is IcycleState)
         {
