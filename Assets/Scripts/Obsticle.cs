@@ -12,12 +12,6 @@ public sealed class Obsticle : MonoBehaviour, ISaveableItem<ObsticleSaveableData
             destructable.Hit(this);
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.TryGetComponent(out Player destructable))
-    //        destructable.Hit(this);
-    //}
-
     public void Kill()
     {
         Destroy(gameObject);

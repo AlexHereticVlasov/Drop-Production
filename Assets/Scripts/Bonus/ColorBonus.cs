@@ -19,3 +19,16 @@ public sealed class ColorBonus : BaseBonus
         Destroy(gameObject);
     }
 }
+
+public sealed class ItemBonus : BaseBonus
+{
+    public override void Apply(Player player)
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Init()
+    {
+        //throw new System.NotImplementedException();
+    }
+}
