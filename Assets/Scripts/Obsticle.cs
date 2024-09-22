@@ -6,17 +6,17 @@ public sealed class Obsticle : MonoBehaviour, ISaveableItem<ObsticleSaveableData
     [SerializeField] private int _index;
     [SerializeField] private string[] _keys;
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.TryGetComponent(out IDestructable destructable))
-    //        destructable.Hit(this);
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Player destructable))
+        if (collision.TryGetComponent(out IDestructable destructable))
             destructable.Hit(this);
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.TryGetComponent(out Player destructable))
+    //        destructable.Hit(this);
+    //}
 
     public void Kill()
     {

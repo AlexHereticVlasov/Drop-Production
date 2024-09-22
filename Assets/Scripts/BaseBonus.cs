@@ -14,7 +14,7 @@ public abstract class BaseBonus : MonoBehaviour, IDestructable
 
     public void Hit(Obsticle obsticle)
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
 
