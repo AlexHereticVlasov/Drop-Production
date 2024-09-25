@@ -28,6 +28,7 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private PauseBuilder _pauseBuilder;
     [SerializeField] private ControlBuilder _controlBuilder;
     [SerializeField] private Background _background;
+    [SerializeField] private UserData _userData;
 
     private Player _player;
 
@@ -58,6 +59,7 @@ public class LevelLauncher : MonoBehaviour
     private void OnDisable()
     {
         _difficultyBuilder.DeInitialize();
+        _controlBuilder.DeInitialize(_userData);
         _loader.EarthPositionChanged -= OnEarthPositionChanged;
     }
 
@@ -81,9 +83,9 @@ public class LevelLauncher : MonoBehaviour
          _player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
         var cameraAnker = Instantiate(_cameraAnkerTemplate, Vector2.zero, Quaternion.identity);
 
-        _player.Init(_waterPool);
+        _player.Init(_waterPool, _userData);
         cameraAnker.Init(_player.transform);
-        _controlBuilder.BuildControl(_player, cameraAnker);
+        _controlBuilder.Build(_player, cameraAnker, _userData);
         _waterPool.Init(amount);
 
         _player.Victory += OnVictory;

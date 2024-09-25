@@ -71,6 +71,21 @@ public class PlayerMovement : MonoBehaviour
         _speed = state.FallingSpeed;
     }
 
+    //ToDo: TDL
+    public void OnHit()
+    {
+        //StartCoroutine(HitRoutine());
+    }
+
+    //private IEnumerator HitRoutine()
+    //{
+    //    _speed = _state.FallingSpeed * 0.25f;
+    //    _sideSpeed = _state.SideSpeed * 0.25f;
+    //    yield return new WaitForSeconds(0.0625f);
+    //    SetSpeed(_state);
+    //}
+
+
     private float CalculateDistance(float previousX) =>
         Mathf.Abs(Mathf.Min(previousX, _xPositions[_currentIndex]) -
         Mathf.Max(previousX, _xPositions[_currentIndex])) / 1.5f;

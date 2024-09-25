@@ -1,0 +1,69 @@
+капелька.png
+size:2030,830
+filter:Linear,Linear
+pma:true
+drop blue
+bounds:839,416,276,412
+drop piece blue
+bounds:1395,422,101,100
+rotate:90
+drop piece red
+bounds:1497,422,101,100
+rotate:90
+drop piece yellow
+bounds:1871,134,101,100
+drop red
+bounds:1117,416,276,412
+drop yellow
+bounds:1211,2,276,412
+icecle piece blue
+bounds:1871,62,70,77
+rotate:90
+icecle piece blue-1
+bounds:1599,453,70,77
+rotate:90
+icecle piece red
+bounds:1950,54,70,77
+rotate:90
+red icicle
+bounds:2,386,277,442
+snowflake
+bounds:808,27,401,357
+offsets:1,1,403,359
+snowflake piece
+bounds:1871,6,53,54
+offsets:1,1,55,56
+snowflake piece red
+bounds:1974,181,53,54
+offsets:1,1,55,56
+rotate:90
+snowflake piece yellow
+bounds:1974,126,53,54
+rotate:90
+snowflake red
+bounds:2,27,401,357
+offsets:1,1,403,359
+snowflake yellow
+bounds:405,27,401,357
+steam
+bounds:1692,236,303,295
+steam piece
+bounds:1680,30,199,189
+offsets:1,1,201,191
+rotate:90
+steam piece red
+bounds:1489,231,199,189
+offsets:1,1,201,191
+steam piece yellow
+bounds:1489,30,199,189
+offsets:1,1,201,191
+rotate:90
+steam red
+bounds:1395,525,303,295
+rotate:90
+steam yellow
+bounds:1692,533,303,295
+yellow icicle
+bounds:281,386,277,442
+сосулька
+bounds:560,386,277,442
