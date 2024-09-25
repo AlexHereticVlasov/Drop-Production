@@ -22,13 +22,26 @@ public sealed class ColorBonus : BaseBonus
 
 public sealed class ItemBonus : BaseBonus
 {
+    private ItemType _itemType;
+
+    public event UnityAction<ItemType> TypeChanged;
+
+
     public override void Apply(Player player)
     {
-        //throw new System.NotImplementedException();
+        player.AddItem(_itemType);
+        Destroy(gameObject);
     }
 
     public override void Init()
     {
-        //throw new System.NotImplementedException();
+        _itemType = (ItemType)Random.Range(0, 2);
+        TypeChanged?.Invoke(_itemType);
     }
+}
+
+public enum ItemType
+{ 
+    Snowflake = 0,
+    Steam = 1
 }
