@@ -1921,6 +1921,8 @@ MonoBehaviour:
     _rightButton: {fileID: 1364226974}
     _snowButton: {fileID: 1454579005}
     _steamButton: {fileID: 897034839}
+    _snowText: {fileID: 1869406866}
+    _steamText: {fileID: 932230897}
     _virtualCamera: {fileID: 1903220316}
   _background:
     _sprite: {fileID: 1761933690}
