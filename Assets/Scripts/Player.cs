@@ -17,16 +17,19 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     private DropView _dropView;
     private Timer _timer;
     private DropSize _size;
+    private UserData _userData;
 
     public event UnityAction<DropStates> StateChanged;
     public event UnityAction<Player> Victory;
     public event UnityAction Lose;
+    public event UnityAction Hited;
 
     public bool WasHited { get; private set; }
 
-    public void Init(WaterPool pool)
+    public void Init(WaterPool pool, UserData data)
     {
         _pool = pool;
+        _userData = data;
         _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
 
@@ -102,9 +105,11 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
         if (_curentState is SnowflakeState || _curentState is IcycleState)
             return false;
 
-        if (_pool.TryReduce(_states.SnowflakeState.TransformCost))
+        if (_userData.TryUseBonus(ItemType.Snowflake))
+        {
             ChangeState(_states.SnowflakeState);
-
+            return true;
+        }
         return false;
     }
 
@@ -121,7 +126,7 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
         if (_curentState is SteamState || _curentState is IcycleState)
             return false;
 
-        if (_pool.TryReduce(_states.SteamState.TransformCost))
+        if (_userData.TryUseBonus(ItemType.Steam))
             ChangeState(_states.SteamState);
 
         return false;
@@ -137,15 +142,11 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     {
         _movement.SetSpeed(state);
 
-        if (state is DropState)
-            _size.ChangeSize(_pool.Value / (float)_pool.Max);
-        else
-            _size.ChangeSize(1);
+        _size.ChangeSize(state is DropState ? _pool.Value / (float)_pool.Max : 1);
 
         if (_curentState != null)
-        {
-        _curentState.Collider2D.enabled = false;
-        }
+            _curentState.Collider2D.enabled = false;
+
         _curentState = state;
         _curentState.Collider2D.enabled = true;
 
@@ -153,8 +154,6 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
 
         if (_curentState.Length > 0)
             SetTimer(_curentState.Length);
-
-        
     }
 
     public void Hit(Obsticle obsticle)
@@ -162,12 +161,19 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
         if (_canBeHited == false) return;
         WasHited = true;
 
+        if (_curentState is DropState)
+        {
+            obsticle.Hit();
+            Hited?.Invoke();
+        }
+
         if (_curentState is IcycleState)
         {
             obsticle.Kill();
             return;
         }
 
+        _movement.OnHit();
         _pool.Reduce(_curentState.CollisionCost);
         StartCoroutine(BecomeImmortal());
     }
@@ -195,4 +201,6 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
 
         ChangeState(_states.DropState);
     }
+
+    public void AddItem(ItemType itemType) => _userData.AddItem(itemType);
 }

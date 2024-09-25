@@ -23,6 +23,7 @@ public sealed class DropView
 
         _colorHandler.ColorChanged += OnColorChanged;
         _player.StateChanged += OnStateChanged;
+        _player.Hited += PlayHitAnimation;
 
         StartAnimations();
     }
@@ -32,6 +33,18 @@ public sealed class DropView
         _animation.AnimationState.SetAnimation(0, "snowflake particles", true);
         _animation.AnimationState.SetAnimation(1, "snowflake idle spin", true);
         _animation.AnimationState.SetAnimation(2, "steam particles", true);
+    }
+
+    private void PlayHitAnimation()
+    {
+        _animation.AnimationState.SetAnimation(8, "left impact1", false).Complete += (v)=> _animation.AnimationState.SetEmptyAnimation(8, 0); 
+        _animation.AnimationState.SetAnimation(9, "left impact2", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(9, 0);
+        _animation.AnimationState.SetAnimation(10, "left impact3", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(10, 0);
+        _animation.AnimationState.SetAnimation(3, "left impact4", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(3, 0); 
+        _animation.AnimationState.SetAnimation(4, "right impact1", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(4, 0);
+        _animation.AnimationState.SetAnimation(5, "right impact2", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(5, 0); 
+        _animation.AnimationState.SetAnimation(6, "right impact3", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(6, 0); 
+        _animation.AnimationState.SetAnimation(7, "right impact4", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(7, 0); 
     }
 
     private void OnStateChanged(DropStates state)
@@ -51,6 +64,7 @@ public sealed class DropView
     {
         _colorHandler.ColorChanged -= OnColorChanged;
         _player.StateChanged -= OnStateChanged;
+        _player.Hited -= PlayHitAnimation;
     }
 
     private void OnColorChanged(BonusColor newColor) => UpdateSkin();
