@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     private UserData _userData;
 
     public event UnityAction<DropStates> StateChanged;
-    public event UnityAction<Player> Victory;
+    
     public event UnityAction Lose;
     public event UnityAction Hited;
 
@@ -79,8 +79,7 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
 
         if (collision.transform.TryGetComponent(out Earth earth))
         {
-            Victory?.Invoke(this);
-            Debug.Log("Victory");
+            earth.Win();
             return;
         }
     }
@@ -88,8 +87,7 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
     private void OnWaterIsOver()
     {
         Lose?.Invoke();
-        Debug.Log("Lose");
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 
     public void ChangeStateToSnowFlake()

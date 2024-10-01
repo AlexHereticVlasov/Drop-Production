@@ -32,7 +32,7 @@ public class LevelLoader : MonoBehaviour
 
         _confinder.Load(data.ConfinderSaveableData);
         _earth.Load(data.EarthSaveableData);
-        EarthPositionChanged?.Invoke(_earth.transform.position.y);
+        EarthPositionChanged?.Invoke(_earth.Transform.position.y);
 
         int count = _anker.childCount;
         for (int i = count - 1; i >= 0; i--)

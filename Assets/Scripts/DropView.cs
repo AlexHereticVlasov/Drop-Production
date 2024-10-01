@@ -24,8 +24,22 @@ public sealed class DropView
         _colorHandler.ColorChanged += OnColorChanged;
         _player.StateChanged += OnStateChanged;
         _player.Hited += PlayHitAnimation;
+        _player.Lose += OnLose;
 
         StartAnimations();
+    }
+
+    private void OnColorChanged(BonusColor newColor) => UpdateSkin();
+
+    private void OnStateChanged(DropStates state)
+    {
+        _state = state;
+        UpdateSkin();
+    }
+
+    private void OnLose()
+    {
+        _animation.AnimationState.SetAnimation(0, "nothing", false);
     }
 
     private void StartAnimations()
@@ -47,11 +61,7 @@ public sealed class DropView
         _animation.AnimationState.SetAnimation(7, "right impact4", false).Complete += (v) => _animation.AnimationState.SetEmptyAnimation(7, 0); 
     }
 
-    private void OnStateChanged(DropStates state)
-    {
-        _state = state;
-        UpdateSkin();
-    }
+    
 
     private void UpdateSkin()
     {
@@ -67,5 +77,5 @@ public sealed class DropView
         _player.Hited -= PlayHitAnimation;
     }
 
-    private void OnColorChanged(BonusColor newColor) => UpdateSkin();
+   
 }

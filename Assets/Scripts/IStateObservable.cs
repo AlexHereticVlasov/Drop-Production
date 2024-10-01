@@ -4,4 +4,5 @@ public interface IStateObservable
 {
     public event UnityAction<DropStates> StateChanged;
     public event UnityAction Hited;
+    public event UnityAction Lose;
 }
