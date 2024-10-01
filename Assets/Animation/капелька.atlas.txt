@@ -1,0 +1,135 @@
+капелька.png
+size:1985,863
+filter:Linear,Linear
+pma:true
+drop blue
+bounds:2,5,276,412
+drop piece blue
+bounds:1882,359,101,100
+drop piece red
+bounds:1853,257,101,100
+drop piece yellow
+bounds:1853,155,101,100
+drop red
+bounds:280,5,276,412
+drop yellow
+bounds:558,5,276,412
+eye red1
+bounds:1363,9,46,65
+offsets:1,1,48,67
+rotate:90
+eye steam red1
+bounds:1363,9,46,65
+offsets:1,1,48,67
+rotate:90
+eye red2
+bounds:1430,9,46,65
+offsets:1,1,48,67
+rotate:90
+eye steam red2
+bounds:1430,9,46,65
+offsets:1,1,48,67
+rotate:90
+eye staem yellow2
+bounds:1497,9,46,65
+offsets:1,1,48,67
+rotate:90
+eye yellow2
+bounds:1497,9,46,65
+offsets:1,1,48,67
+rotate:90
+eye steam yellow1
+bounds:1786,14,46,65
+offsets:1,1,48,67
+rotate:90
+eye yellow1
+bounds:1786,14,46,65
+offsets:1,1,48,67
+rotate:90
+eye steam1
+bounds:1786,394,46,65
+offsets:1,1,48,67
+eye1
+bounds:1786,394,46,65
+offsets:1,1,48,67
+eye steam2
+bounds:1834,394,46,65
+offsets:1,1,48,67
+eye2
+bounds:1834,394,46,65
+offsets:1,1,48,67
+icecle piece blue
+bounds:1270,479,70,77
+icecle piece blue-1
+bounds:1198,479,70,77
+icecle piece red
+bounds:1342,479,70,77
+red icicle
+bounds:2,419,277,442
+snowflake
+bounds:1195,57,401,357
+offsets:1,1,403,359
+rotate:90
+snowflake eye red2
+bounds:1414,484,72,55
+offsets:1,1,74,57
+rotate:90
+snowflake eye1
+bounds:1471,484,72,55
+offsets:1,1,74,57
+rotate:90
+snowflake eye2
+bounds:1528,484,72,55
+offsets:1,1,74,57
+rotate:90
+snowflake piece
+bounds:1307,2,53,54
+offsets:1,1,55,56
+rotate:90
+snowflake piece red
+bounds:1195,2,53,54
+offsets:1,1,55,56
+rotate:90
+snowflake piece yellow
+bounds:1251,2,53,54
+rotate:90
+snowflake red
+bounds:836,16,401,357
+offsets:1,1,403,359
+rotate:90
+snowflake yellow
+bounds:839,460,401,357
+rotate:90
+snowflake yellow eye1
+bounds:1564,5,72,55
+offsets:1,1,74,57
+snowflake yellow eye2
+bounds:1638,5,72,55
+offsets:1,1,74,57
+snpwflake eye red1
+bounds:1712,5,72,55
+offsets:1,1,74,57
+steam
+bounds:1554,62,303,295
+rotate:90
+steam piece
+bounds:1585,367,199,189
+offsets:1,1,201,191
+steam piece red
+bounds:1792,662,199,189
+offsets:1,1,201,191
+rotate:90
+steam piece yellow
+bounds:1792,461,199,189
+offsets:1,1,201,191
+rotate:90
+steam red
+bounds:1198,558,303,295
+rotate:90
+steam yellow
+bounds:1495,558,303,295
+rotate:90
+yellow icicle
+bounds:281,419,277,442
+сосулька
+bounds:560,419,277,442

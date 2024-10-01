@@ -29,6 +29,7 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private ControlBuilder _controlBuilder;
     [SerializeField] private Background _background;
     [SerializeField] private UserData _userData;
+    [SerializeField] private Earth _earth;
 
     private Player _player;
 
@@ -61,6 +62,7 @@ public class LevelLauncher : MonoBehaviour
         _difficultyBuilder.DeInitialize();
         _controlBuilder.DeInitialize(_userData);
         _loader.EarthPositionChanged -= OnEarthPositionChanged;
+        _earth.Victory -= OnVictory;
     }
 
     public void Launch(int index)
@@ -88,10 +90,10 @@ public class LevelLauncher : MonoBehaviour
         _controlBuilder.Build(_player, cameraAnker, _userData);
         _waterPool.Init(amount);
 
-        _player.Victory += OnVictory;
+        _earth.Victory += OnVictory;
     }
 
-    private void OnVictory(Player player)
+    private void OnVictory()
     {
         //Remove Camera target
 
