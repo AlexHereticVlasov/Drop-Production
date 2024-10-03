@@ -196,7 +196,7 @@ MonoBehaviour:
       <Length>k__BackingField: 10
       <SizeWiddth>k__BackingField: 0
       <State>k__BackingField: 2
-      <Collider2D>k__BackingField: {fileID: 0}
+      <Collider2D>k__BackingField: {fileID: 6526826091619633307}
     <SnowflakeState>k__BackingField:
       <CollisionCost>k__BackingField: 10
       <TransformCost>k__BackingField: 10
@@ -205,7 +205,7 @@ MonoBehaviour:
       <Length>k__BackingField: 10
       <SizeWiddth>k__BackingField: 0
       <State>k__BackingField: 1
-      <Collider2D>k__BackingField: {fileID: 0}
+      <Collider2D>k__BackingField: {fileID: 615845309392934686}
     <IcycleState>k__BackingField:
       <CollisionCost>k__BackingField: 10
       <TransformCost>k__BackingField: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
       <Length>k__BackingField: 10
       <SizeWiddth>k__BackingField: 0
       <State>k__BackingField: 3
-      <Collider2D>k__BackingField: {fileID: 0}
+      <Collider2D>k__BackingField: {fileID: 6620732976015649897}
   _circleCollider: {fileID: 267804213907274126}
   _IKBone: {fileID: 7968525616554344244}
 --- !u!1001 &4336891346174785134
@@ -638,9 +638,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 892dcab5a947ccb438ad78b8602efbe4, type: 3}
+--- !u!60 &615845309392934686 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3793253235293315440, guid: 892dcab5a947ccb438ad78b8602efbe4, type: 3}
+  m_PrefabInstance: {fileID: 4336891346174785134}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1050823651302149247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3655512466928384529, guid: 892dcab5a947ccb438ad78b8602efbe4, type: 3}
+  m_PrefabInstance: {fileID: 4336891346174785134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &6526826091619633307 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7402873304963088117, guid: 892dcab5a947ccb438ad78b8602efbe4, type: 3}
+  m_PrefabInstance: {fileID: 4336891346174785134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &6620732976015649897 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7479962364445858311, guid: 892dcab5a947ccb438ad78b8602efbe4, type: 3}
   m_PrefabInstance: {fileID: 4336891346174785134}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7968525616554344244 stripped

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,7 @@ public class LevelLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject _levelPanel;
     [SerializeField] private GameObject _victoryPanel;
+    [SerializeField] private GameObject _losePanel;
     [SerializeField] private Transform _content;
 
     [Header("Data")]
@@ -35,7 +37,8 @@ public class LevelLauncher : MonoBehaviour
 
     private void Start()
     {
-        _levelPanel.SetActive(true);
+        //ToDo: if not first launch
+        //_levelPanel.SetActive(true);
 
         for (int i = 0; i < _levels.Lenght; i++)
         {
@@ -65,6 +68,8 @@ public class LevelLauncher : MonoBehaviour
         _earth.Victory -= OnVictory;
     }
 
+    public void FirstLaunch() => Launch(0);
+
     public void Launch(int index)
     {
         var difficulty = _difficultyBuilder.Get();
@@ -82,7 +87,7 @@ public class LevelLauncher : MonoBehaviour
         _levelPanel.SetActive(false);
         _bonusSpawner.Launch();
 
-         _player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
+        _player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
         var cameraAnker = Instantiate(_cameraAnkerTemplate, Vector2.zero, Quaternion.identity);
 
         _player.Init(_waterPool, _userData);
@@ -91,23 +96,34 @@ public class LevelLauncher : MonoBehaviour
         _waterPool.Init(amount);
 
         _earth.Victory += OnVictory;
+        _player.Lose += OnLose;
+    }
+
+    private void OnLose()
+    {
+        StartCoroutine(ShowLosePanel());
+    }
+
+    private IEnumerator ShowLosePanel()
+    {
+        yield return new WaitForSeconds(1);
+        _losePanel.SetActive(true);
     }
 
     private void OnVictory()
     {
-        //Remove Camera target
-
-        //Play Flower Animation
-
-        //Show Victory Window
         _victoryPanel.SetActive(true);
     }
 
     public void ShowLevelMenu()
     {
         _victoryPanel.SetActive(false);
+        _losePanel.SetActive(false);
         _levelPanel.SetActive(true);
-        Destroy(_player.gameObject);
+        
+        if (_player != null)
+            Destroy(_player.gameObject);
+
         _bonusSpawner.Stop();
     }
 }
