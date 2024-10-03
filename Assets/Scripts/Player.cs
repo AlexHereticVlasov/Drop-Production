@@ -80,6 +80,8 @@ public class Player : MonoBehaviour, IDestructable, IStateObservable
         if (collision.transform.TryGetComponent(out Earth earth))
         {
             earth.Win();
+            _dropView.Melt();
+            Destroy(gameObject, 0.5f);
             return;
         }
     }

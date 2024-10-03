@@ -1,0 +1,41 @@
+win defeat popup.png
+size:2002,1482
+filter:Linear,Linear
+pma:true
+blue back left
+bounds:1793,828,169,322
+offsets:1,1,171,324
+blue back right
+bounds:1630,334,168,322
+offsets:1,1,170,324
+rotate:90
+blue tape
+bounds:2,480,1000,369
+rotate:90
+blue tape end left
+bounds:334,6,329,472
+blue tape end right
+bounds:2,6,330,472
+button
+bounds:1580,616,534,211
+offsets:1,1,536,213
+rotate:90
+popup back
+bounds:744,559,834,921
+red back left
+bounds:1793,504,169,322
+offsets:1,1,171,324
+red back right
+bounds:1630,10,168,322
+offsets:1,1,170,324
+red tape
+bounds:373,480,1000,369
+rotate:90
+red tape end left
+bounds:665,107,371,328
+rotate:90
+red tape end right
+bounds:1630,1152,370,328
+trumpet left
+bounds:995,2,555,633
+rotate:90

@@ -24,7 +24,7 @@ public sealed class DropView
         _colorHandler.ColorChanged += OnColorChanged;
         _player.StateChanged += OnStateChanged;
         _player.Hited += PlayHitAnimation;
-        _player.Lose += OnLose;
+        _player.Lose += Melt;
 
         StartAnimations();
     }
@@ -37,7 +37,7 @@ public sealed class DropView
         UpdateSkin();
     }
 
-    private void OnLose()
+    public void Melt()
     {
         _animation.AnimationState.SetAnimation(0, "nothing", false);
     }
