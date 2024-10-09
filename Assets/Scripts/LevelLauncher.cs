@@ -33,6 +33,9 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private UserData _userData;
     [SerializeField] private Earth _earth;
 
+    [SerializeField] private GameObject _bonusButtonsPanel;
+    [SerializeField] private GameObject _pauseButton;
+
     private Player _player;
 
     private void Start()
@@ -97,6 +100,9 @@ public class LevelLauncher : MonoBehaviour
 
         _earth.Victory += OnVictory;
         _player.Lose += OnLose;
+
+        _bonusButtonsPanel.SetActive(true);
+        _pauseButton.SetActive(true);
     }
 
     private void OnLose()
