@@ -1,0 +1,13 @@
+горшок.png
+size:568,247
+filter:Linear,Linear
+pma:true
+Слой1
+bounds:439,113,132,117
+rotate:90
+Слой2
+bounds:439,5,127,106
+Слой3
+bounds:2,2,265,243
+Слой4
+bounds:269,59,168,186

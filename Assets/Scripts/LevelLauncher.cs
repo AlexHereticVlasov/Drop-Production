@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,7 @@ public class LevelLauncher : MonoBehaviour
 {
     [SerializeField] private GameObject _levelPanel;
     [SerializeField] private GameObject _victoryPanel;
+    [SerializeField] private GameObject _losePanel;
     [SerializeField] private Transform _content;
 
     [Header("Data")]
@@ -28,12 +30,18 @@ public class LevelLauncher : MonoBehaviour
     [SerializeField] private PauseBuilder _pauseBuilder;
     [SerializeField] private ControlBuilder _controlBuilder;
     [SerializeField] private Background _background;
+    [SerializeField] private UserData _userData;
+    [SerializeField] private Earth _earth;
+
+    [SerializeField] private GameObject _bonusButtonsPanel;
+    [SerializeField] private GameObject _pauseButton;
 
     private Player _player;
 
     private void Start()
     {
-        _levelPanel.SetActive(true);
+        //ToDo: if not first launch
+        //_levelPanel.SetActive(true);
 
         for (int i = 0; i < _levels.Lenght; i++)
         {
@@ -58,8 +66,12 @@ public class LevelLauncher : MonoBehaviour
     private void OnDisable()
     {
         _difficultyBuilder.DeInitialize();
+        _controlBuilder.DeInitialize(_userData);
         _loader.EarthPositionChanged -= OnEarthPositionChanged;
+        _earth.Victory -= OnVictory;
     }
+
+    public void FirstLaunch() => Launch(0);
 
     public void Launch(int index)
     {
@@ -78,32 +90,46 @@ public class LevelLauncher : MonoBehaviour
         _levelPanel.SetActive(false);
         _bonusSpawner.Launch();
 
-         _player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
+        _player = Instantiate(_playerTemplate, Vector2.zero, Quaternion.identity);
         var cameraAnker = Instantiate(_cameraAnkerTemplate, Vector2.zero, Quaternion.identity);
 
-        _player.Init(_waterPool);
+        _player.Init(_waterPool, _userData);
         cameraAnker.Init(_player.transform);
-        _controlBuilder.BuildControl(_player, cameraAnker);
+        _controlBuilder.Build(_player, cameraAnker, _userData);
         _waterPool.Init(amount);
 
-        _player.Victory += OnVictory;
+        _earth.Victory += OnVictory;
+        _player.Lose += OnLose;
+
+        _bonusButtonsPanel.SetActive(true);
+        _pauseButton.SetActive(true);
     }
 
-    private void OnVictory(Player player)
+    private void OnLose()
     {
-        //Remove Camera target
+        StartCoroutine(ShowLosePanel());
+    }
 
-        //Play Flower Animation
+    private IEnumerator ShowLosePanel()
+    {
+        yield return new WaitForSeconds(1);
+        _losePanel.SetActive(true);
+    }
 
-        //Show Victory Window
+    private void OnVictory()
+    {
         _victoryPanel.SetActive(true);
     }
 
     public void ShowLevelMenu()
     {
         _victoryPanel.SetActive(false);
+        _losePanel.SetActive(false);
         _levelPanel.SetActive(true);
-        Destroy(_player.gameObject);
+        
+        if (_player != null)
+            Destroy(_player.gameObject);
+
         _bonusSpawner.Stop();
     }
 }

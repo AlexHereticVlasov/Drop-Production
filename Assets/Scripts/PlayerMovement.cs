@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private DropSize _size;
     private BaseState _state;
-    private float[] _xPositions = {-2f, -1f, 0, 1f, 2f };
+    private float[] _xPositions = { -2f, -1f, 0, 1f, 2f };
     private int _currentIndex = 2;
     private float _sideSpeed = 1;
     private float _speed = 1;
@@ -22,10 +22,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
-        float width = _state.SizeWiddth == 1 ? _size.Size : 1;
-        //Debug.Log(width);
+        float width = _state.SizeWiddth == 1 ? GetSize() : 1;
         _transform.Translate(_speed * Time.deltaTime * Vector2.down * width);
     }
+
+    private float GetSize() => 0.5f + _size.Size * 0.5f;
 
     public void MoveLeft() => TryChangePosition(-1);
     public void MoveRight() => TryChangePosition(1);
@@ -55,8 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         while (factor < 1)
         {
-            float width = _state.SizeWiddth == 1 ? _size.Size : 1;
-            factor += Time.deltaTime / distance * _sideSpeed * width;
+            factor += Time.deltaTime / distance * _sideSpeed * GetSize();
             float newX = Mathf.Lerp(previousX, _xPositions[_currentIndex], factor);
             _transform.position = new Vector2(newX, _transform.position.y);
             yield return null;
@@ -65,13 +65,28 @@ public class PlayerMovement : MonoBehaviour
         _moveRoutine = null;
     }
 
-    internal void SetSpeed(BaseState state)
+    public void SetSpeed(BaseState state)
     {
         _sideSpeed = state.SideSpeed;
         _speed = state.FallingSpeed;
     }
 
-    private float CalculateDistance(float previousX) => 
+    //ToDo: TDL
+    public void OnHit()
+    {
+        //StartCoroutine(HitRoutine());
+    }
+
+    //private IEnumerator HitRoutine()
+    //{
+    //    _speed = _state.FallingSpeed * 0.25f;
+    //    _sideSpeed = _state.SideSpeed * 0.25f;
+    //    yield return new WaitForSeconds(0.0625f);
+    //    SetSpeed(_state);
+    //}
+
+
+    private float CalculateDistance(float previousX) =>
         Mathf.Abs(Mathf.Min(previousX, _xPositions[_currentIndex]) -
         Mathf.Max(previousX, _xPositions[_currentIndex])) / 1.5f;
 }
