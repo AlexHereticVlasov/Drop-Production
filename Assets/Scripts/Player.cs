@@ -1,36 +1,41 @@
+using Spine.Unity;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour, IDestructable
+public class Player : MonoBehaviour, IDestructable, IStateObservable
 {
     [SerializeField] private WaterPool _pool;
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private BaseState _curentState;
     [SerializeField] private StatesBeen _states;
-    [SerializeField] private ColorBean _bean;
+    [SerializeField] private CircleCollider2D _circleCollider;
+    [SerializeField] private SkeletonUtilityBone _IKBone;
 
     private bool _canBeHited = true;
     private ColorHandler _colorHandler;
     private DropView _dropView;
     private Timer _timer;
     private DropSize _size;
+    private UserData _userData;
 
-    public event UnityAction<Player> Victory;
+    public event UnityAction<DropStates> StateChanged;
+    
     public event UnityAction Lose;
-
+    public event UnityAction Hited;
 
     public bool WasHited { get; private set; }
 
-    public void Init(WaterPool pool)
+    public void Init(WaterPool pool, UserData data)
     {
         _pool = pool;
+        _userData = data;
         _pool.ValueChanged += OnValueChanged;
         _pool.WaterIsOver += OnWaterIsOver;
 
-        _size = new DropSize(transform, StartCoroutine);
+        _size = new DropSize(_circleCollider, StartCoroutine, _IKBone);
         _colorHandler = new ColorHandler();
-        _dropView = new DropView(GetComponent<SpriteRenderer>(), _bean, _colorHandler);
+        _dropView = new DropView(GetComponentInChildren<SkeletonAnimation>(), _colorHandler, this);
         ChangeState(_states.DropState);
 
         _movement.Init(_size, ref _curentState);
@@ -74,8 +79,9 @@ public class Player : MonoBehaviour, IDestructable
 
         if (collision.transform.TryGetComponent(out Earth earth))
         {
-            Victory?.Invoke(this);
-            Debug.Log("Victory");
+            earth.Win();
+            _dropView.Melt();
+            Destroy(gameObject, 0.5f);
             return;
         }
     }
@@ -83,8 +89,7 @@ public class Player : MonoBehaviour, IDestructable
     private void OnWaterIsOver()
     {
         Lose?.Invoke();
-        Debug.Log("Lose");
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
     }
 
     public void ChangeStateToSnowFlake()
@@ -100,9 +105,11 @@ public class Player : MonoBehaviour, IDestructable
         if (_curentState is SnowflakeState || _curentState is IcycleState)
             return false;
 
-        if (_pool.TryReduce(_states.SnowflakeState.TransformCost))
+        if (_userData.TryUseBonus(ItemType.Snowflake))
+        {
             ChangeState(_states.SnowflakeState);
-
+            return true;
+        }
         return false;
     }
 
@@ -119,7 +126,7 @@ public class Player : MonoBehaviour, IDestructable
         if (_curentState is SteamState || _curentState is IcycleState)
             return false;
 
-        if (_pool.TryReduce(_states.SteamState.TransformCost))
+        if (_userData.TryUseBonus(ItemType.Steam))
             ChangeState(_states.SteamState);
 
         return false;
@@ -134,15 +141,19 @@ public class Player : MonoBehaviour, IDestructable
     private void ChangeState(BaseState state)
     {
         _movement.SetSpeed(state);
+
+        _size.ChangeSize(state is DropState ? _pool.Value / (float)_pool.Max : 1);
+
+        if (_curentState != null)
+            _curentState.Collider2D.enabled = false;
+
         _curentState = state;
+        _curentState.Collider2D.enabled = true;
+
+        StateChanged?.Invoke(_curentState.State);
 
         if (_curentState.Length > 0)
             SetTimer(_curentState.Length);
-
-        if (state is DropState)
-            _size.ChangeSize();
-        else
-            _size.ChangeSize(1);
     }
 
     public void Hit(Obsticle obsticle)
@@ -150,12 +161,19 @@ public class Player : MonoBehaviour, IDestructable
         if (_canBeHited == false) return;
         WasHited = true;
 
+        if (_curentState is DropState)
+        {
+            obsticle.Hit();
+            Hited?.Invoke();
+        }
+
         if (_curentState is IcycleState)
         {
             obsticle.Kill();
             return;
         }
 
+        _movement.OnHit();
         _pool.Reduce(_curentState.CollisionCost);
         StartCoroutine(BecomeImmortal());
     }
@@ -183,4 +201,6 @@ public class Player : MonoBehaviour, IDestructable
 
         ChangeState(_states.DropState);
     }
+
+    public void AddItem(ItemType itemType) => _userData.AddItem(itemType);
 }

@@ -1,13 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ObsticleMovement : MonoBehaviour, ISaveableItem
+public class ObsticleMovement : MonoBehaviour, ISaveableItem<MovingObsticleSaveableData>
 {
     [SerializeField] private GameObject _pointTemplate;
 
     [SerializeField] private Obsticle _obsticle;
     [SerializeField] private Transform[] _points;
     [SerializeField] private float _speed = 1;
+    [SerializeField] private bool _needToFlip;
 
     private Transform _obsticleTransform;
     private int _index;
@@ -22,7 +22,12 @@ public class ObsticleMovement : MonoBehaviour, ISaveableItem
             throw new System.Exception("Moving Obsticle has less then 2 waypoints");
     }
 
-    private void Start() => _distance = 1 / Vector2.Distance(_points[0].position, _points[1].position);
+    private void Start()
+    {
+        _distance = 1 / Vector2.Distance(_points[0].position, _points[1].position);
+        if (NeedToFlip())
+            Flip();
+    }
 
     private void Update()
     {
@@ -34,14 +39,25 @@ public class ObsticleMovement : MonoBehaviour, ISaveableItem
             _factor--;
             _index++;
             _index %= _points.Length;
+            TryFlip();
         }
     }
+
+    private void TryFlip()
+    {
+        if (_needToFlip == false) return;
+        Flip();
+    }
+
+    private bool NeedToFlip() => transform.position.x > _points[0].position.x;
+
+    private void Flip() => _obsticle.transform.Rotate(0, 180, 0);
 
     private void Move() => _obsticleTransform.position =
         Vector2.Lerp(_points[_index].position, _points[(_index + 1) %
                      _points.Length].position, _factor);
 
-    public BaseSaveableData GetData()
+    public MovingObsticleSaveableData GetData()
     {
         Vector2[] points = new Vector2[_points.Length];
         for (int i = 0; i < points.Length; i++)
@@ -49,33 +65,30 @@ public class ObsticleMovement : MonoBehaviour, ISaveableItem
             points[i] = _points[i].position;
         }
 
-        ObsticleSaveableData data = _obsticle.GetData() as ObsticleSaveableData;
+        ObsticleSaveableData data = _obsticle.GetData();
 
         return new MovingObsticleSaveableData(points, _speed, data);
     }
 
-    public void Load(BaseSaveableData data)
+    public void Load(MovingObsticleSaveableData data)
     {
-        if (data is MovingObsticleSaveableData movingObsticleSaveableData)
+        _points = new Transform[data.Points.Length];
+        for (int i = 0; i < data.Points.Length; i++)
         {
-            _points = new Transform[movingObsticleSaveableData.Points.Length];
-            for (int i = 0; i < movingObsticleSaveableData.Points.Length; i++)
-            {
-                var position = movingObsticleSaveableData.Points[i];
-                _points[i] = Instantiate(_pointTemplate, position, Quaternion.identity, transform).transform;
-            }
-
-            _speed = movingObsticleSaveableData.Speed;
-            _obsticle.Load(new ObsticleSaveableData(movingObsticleSaveableData.Index, movingObsticleSaveableData.Position));
+            var position = data.Points[i];
+            _points[i] = Instantiate(_pointTemplate, position, Quaternion.identity, transform).transform;
         }
+
+        _speed = data.Speed;
+        _obsticle.Load(new ObsticleSaveableData(data.Index, data.Position));
     }
 }
 
-public interface ISaveableItem
+public interface ISaveableItem<T> where T : BaseSaveableData
 {
-    BaseSaveableData GetData();
+    T GetData();
 
-    void Load(BaseSaveableData data);
+    void Load(T data);
 }
 
 public abstract class BaseSaveableData { }

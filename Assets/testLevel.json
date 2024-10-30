@@ -25,14 +25,6 @@
             "y": -59.0
         }
     },
-    "ObsticleSaveableDatas": [
-        {
-            "Index": 1,
-            "Position": {
-                "x": 0.0,
-                "y": -16.399999618530275
-            }
-        }
-    ],
+    "ObsticleSaveableDatas": [],
     "MovingObsticleSaveableDatas": []
 }

@@ -1,0 +1,24 @@
+росток.png
+size:1776,1446
+filter:Linear,Linear
+pma:true
+10cdae65e3326c4c
+bounds:739,442,1002,1010
+rotate:90
+ground
+bounds:2,4,1440,735
+offsets:1,1,1442,737
+rotate:90
+ground mask
+bounds:739,66,658,374
+leaf1
+bounds:1399,264,306,176
+leaf2
+bounds:1399,105,319,157
+part1
+bounds:739,2,61,62
+part2
+bounds:802,31,32,33
+stebel
+bounds:1399,2,101,375
+rotate:90

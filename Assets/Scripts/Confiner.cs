@@ -1,12 +1,12 @@
 using Cinemachine;
 using UnityEngine;
 
-public class Confiner : MonoBehaviour, ISaveableItem
+public class Confiner : MonoBehaviour, ISaveableItem<ConfinerSaveableData>
 {
     [SerializeField] private PolygonCollider2D _collider;
     [SerializeField] private CinemachineConfiner2D _cinemachineConfiner;
 
-    public BaseSaveableData GetData()
+    public ConfinerSaveableData GetData()
     {
         Vector2[] _points = new Vector2[4];
 
@@ -16,13 +16,10 @@ public class Confiner : MonoBehaviour, ISaveableItem
         return new ConfinerSaveableData(_points);
     }
 
-    public void Load(BaseSaveableData data)
+    public void Load(ConfinerSaveableData data)
     {
-        if (data is ConfinerSaveableData confinerSaveableData)
-        {
-            _collider.SetPath(0, confinerSaveableData.Points);
-            _cinemachineConfiner.InvalidateCache();
-        }
+        _collider.SetPath(0, data.Points);
+        _cinemachineConfiner.InvalidateCache();
     }
 }
 

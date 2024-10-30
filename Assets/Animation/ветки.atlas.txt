@@ -1,0 +1,26 @@
+ветки.png
+size:1761,256
+filter:Linear,Linear
+pma:true
+branch long
+bounds:217,3,868,251
+leaf1
+bounds:1572,34,146,187
+rotate:90
+leaf2
+bounds:1326,61,193,111
+rotate:90
+ls1
+bounds:1439,27,131,153
+offsets:1,1,133,155
+ls2
+bounds:1087,8,246,237
+offsets:1,1,248,239
+rotate:90
+ls3
+bounds:2,2,252,213
+offsets:1,1,254,215
+rotate:90
+ls4
+bounds:1439,182,304,72
+offsets:1,1,306,74

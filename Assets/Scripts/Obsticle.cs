@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D), typeof(SpriteRenderer))]
-public sealed class Obsticle : MonoBehaviour, ISaveableItem
+public sealed class Obsticle : MonoBehaviour, ISaveableItem<ObsticleSaveableData>
 {
-    [SerializeField, Range(0, 2)] private int _index;
-    [SerializeField] private ObsticleViewBean _bean;
+    [SerializeField] private int _index;
+    [SerializeField] private string[] _keys;
 
-    private void OnValidate()
-    {
-        if (Application.isEditor == false || Application.isPlaying) return;
-
-        GetComponent<BoxCollider2D>().size = _bean[_index].ColliderSize;
-        GetComponent<SpriteRenderer>().sprite = _bean[_index].Sprite;
-    }
+    public event UnityAction Killed;
+    public event UnityAction Hited;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,22 +18,13 @@ public sealed class Obsticle : MonoBehaviour, ISaveableItem
 
     public void Kill()
     {
-        Destroy(gameObject);
+        Killed?.Invoke();
+        Destroy(gameObject, 2);
     }
 
-    public BaseSaveableData GetData()
-    {
-        return new ObsticleSaveableData(_index, transform.position);
-    }
+    public ObsticleSaveableData GetData() => new ObsticleSaveableData(_index, transform.position);
 
-    public void Load(BaseSaveableData data)
-    {
-        if (data is ObsticleSaveableData obsticleSaveableData)
-        {
-            transform.position = obsticleSaveableData.Position;
-            _index = obsticleSaveableData.Index;
-            GetComponent<BoxCollider2D>().size = _bean[_index].ColliderSize;
-            GetComponent<SpriteRenderer>().sprite = _bean[_index].Sprite;
-        }
-    }
+    public void Load(ObsticleSaveableData data) => transform.position = data.Position;
+
+    public void Hit() => Hited?.Invoke();
 }
