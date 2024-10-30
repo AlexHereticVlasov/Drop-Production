@@ -45,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Cloud
+    uniqueID: 1974038427
+    locked: 0
   - name: Earth
     uniqueID: 2049073501
     locked: 0
